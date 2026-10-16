@@ -6,19 +6,23 @@ import { lesson07, lesson08, lesson09 } from "./lessons-07-09";
 import { lesson10, lesson11, lesson12 } from "./lessons-10-12";
 import { ext01, ext02, ext03, ext04, ext05, ext06, extraCitations } from "./extensions-01-06";
 import { ext07, ext08, ext09, ext10, ext11, ext12, extraCitations2 } from "./extensions-07-12";
+import { v3 } from "./extensions-v3";
 
 export const passages = passagesJson as unknown as Record<string, Passage>;
 
 function expand(l: ScratchLesson, ext: LessonExtension, extra: Record<string, Citation[]> = {}): ScratchLesson {
   const cards: Card[] = [];
+  const more = v3[l.number];
   for (const c of l.cards) {
     cards.push(extra[c.id] ? { ...c, citations: [...c.citations, ...extra[c.id]] } : c);
+    for (const a of more?.after[c.id] ?? []) cards.push(a);
     for (const a of ext.after?.[c.id] ?? []) cards.push(a);
   }
+  for (const id of Object.keys(more?.after ?? {})) if (!l.cards.some(c => c.id === id)) throw new Error(`v3 anchor ${l.slug}/${id} missing`);
   // keep the closing summary card last if the lesson ends with one
   const last = cards[cards.length - 1];
   const tail = last.kind === "summary" && l.cards[l.cards.length - 1].id === last.id ? [cards.pop()!] : [];
-  return { ...l, cards: [...cards, ...(ext.append ?? []), ...tail], quiz: ext.quiz };
+  return { ...l, cards: [...cards, ...(ext.append ?? []), ...tail], quiz: [...ext.quiz, ...(more?.quiz ?? [])] };
 }
 const extras = { ...extraCitations } as Record<number, Record<string, Citation[]>>;
 for (const [n, v] of Object.entries(extraCitations2)) extras[+n] = { ...(extras[+n] ?? {}), ...v };

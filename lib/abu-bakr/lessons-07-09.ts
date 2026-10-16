@@ -196,7 +196,7 @@ export const lesson09: ScratchLesson = {
       citations: [ { key: "bidayah_v4_v4_p36", grading: "no_chain_stated" } ],
       flags: [
         { kind: "no_chain", text: { ar: "قول أبي بكر أورده ابن كثير بصيغة «فيُقال».", en: "Ibn Kathir gives Abu Bakr's remark with 'it is said'." } },
-        { kind: "gap", text: { ar: "لم تُستخرج بعد نصوص عن الأسود العنسي وطليحة وسجاح ومعركة اليمامة بتفصيلها.", en: "Texts on al-Aswad al-ʿAnsi, Tulayhah, Sajah and the detailed Battle of al-Yamamah have not been extracted yet." } },
+        { kind: "gap", text: { ar: "نصوص الأسود العنسي وطليحة وسجاح أُضيفت في بطاقات هذا الدرس؛ ولم تُستخرج بعد تفاصيل مقتل الأسود ولا مآل سجاح.", en: "Texts on al-Aswad, Tulayhah and Sajah are now in this lesson's cards; the details of al-Aswad's killing and Sajah's outcome are not yet extracted." } },
       ],
     },
   ],

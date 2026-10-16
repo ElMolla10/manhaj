@@ -140,18 +140,17 @@ export const lesson05: ScratchLesson = {
         { key: "ibn_hisham_p613", grading: "grading_unverified" },
       ],
       flags: [
-        { kind: "gap", text: { ar: "لم يُستخرج بعد نص الفصل نفسه ولا سنة هذه الحجة؛ اكتفينا بالعنوان وبإعلان علي.", en: "The body of the section and the year of this Hajj have not been extracted; only the heading and ʿAli's proclamation are used." } },
       ],
     },
     { id: "gaps", kind: "summary",
       title: { ar: "ما لم نوثّقه بعد", en: "What is not yet sourced" },
       body: {
-        ar: "هذا الدرس ناقص عن قصد: لم نجد بعد في المقاطع الموثقة نصوصًا عن دور أبي بكر في الحديبية، ولا عن نفقته في غزوة تبوك، ولا عن الخندق وفتح مكة. لن تُضاف هذه الموضوعات حتى تُستخرج نصوصها من الكتب.",
-        en: "This lesson is deliberately incomplete: the verified passages do not yet cover Abu Bakr's role at Hudaybiyyah, his spending for Tabuk, the Trench or the Conquest of Makkah. These will be added only once their texts are extracted from the books.",
+        ar: "أُضيفت نصوص الحديبية وتبوك وفتح مكة وسنة الحجة (٩ هـ) في البطاقات السابقة من كتب أُرسلت حديثًا. وما زال دور أبي بكر في غزوة الخندق غير موثّق، ولن يُضاف حتى يُستخرج نصه.",
+        en: "Hudaybiyyah, Tabuk, the Conquest of Makkah and the year of the Hajj (9 AH) are now covered in the cards above, from newly supplied books. Abu Bakr's role at the Trench is still unsourced and will be added only once its text is extracted.",
       },
       citations: [],
       flags: [
-        { kind: "gap", text: { ar: "المقاطع المتوفرة عن الحديبية (ابن هشام ص٥٠٣) وتبوك (ص٥٩٧–٥٩٨) لا تذكر أبا بكر.", en: "The available Hudaybiyyah (Ibn Hisham p. 503) and Tabuk (pp. 597–598) passages do not mention Abu Bakr." } },
+        { kind: "gap", text: { ar: "لم نجد بعد نصًّا عن دور أبي بكر في غزوة الخندق.", en: "No passage on Abu Bakr's role at the Trench has been found yet." } },
       ],
     },
   ],
