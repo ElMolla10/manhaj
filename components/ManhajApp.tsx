@@ -4,6 +4,8 @@
 import { useEffect, useState } from "react";
 import { Lang, paths } from "@/lib/content";
 import LessonExperience from "@/components/LessonExperience";
+import ScratchLessonView from "@/components/ScratchLessonView";
+import { scratchBySlug } from "@/lib/abu-bakr";
 import { ComingSoon, HomeView, LearnView, PathView, SearchView, SubjectView, UtilityView } from "@/components/Views";
 
 export default function ManhajApp({ route = [] }: { route?: string[] }) {
@@ -18,6 +20,7 @@ export default function ManhajApp({ route = [] }: { route?: string[] }) {
   let view:React.ReactNode;
   if(first==="home") view=<HomeView lang={lang}/>;
   else if(first==="learn") view=<LearnView lang={lang}/>;
+  else if(isLesson&&first==="sahabah"&&scratchBySlug[route[2]]) view=<ScratchLessonView lesson={scratchBySlug[route[2]]} lang={lang} base={paths.abuBakr.href}/>;
   else if(isLesson&&first==="sahabah") view=<LessonExperience path={paths.abuBakr} lang={lang}/>;
   else if(route.length===2&&first==="sahabah") view=<PathView path={paths.abuBakr} lang={lang}/>;
   else if(isLesson&&first==="seerah") view=<ComingSoon id="seerah" lang={lang}/>;
