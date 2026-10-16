@@ -323,6 +323,12 @@ button { color: inherit; }
 .quiz-count span.active { background:var(--green-2); }
 .quiz-options { display:grid; gap:10px; }
 .quiz-options button { display:grid; grid-template-columns:25px 1fr auto; gap:10px; align-items:center; padding:17px; border:1px solid var(--line); border-radius:14px; background:var(--paper); color:var(--ink); text-align:start; cursor:pointer; }
+.quiz-options button>i { grid-column:1; }
+.quiz-options button>span { grid-column:2; min-width:0; overflow-wrap:anywhere; }
+.quiz-options button>b { grid-column:3; }
+.quiz-options button:not(:has(>i)) { grid-template-columns:1fr auto; }
+.quiz-options button:not(:has(>i))>span { grid-column:1; }
+.quiz-options button:not(:has(>i))>b { grid-column:2; }
 .quiz-options button.selected { border-color:var(--green-2); background:var(--sage); }
 .quiz-options button.correct { border-color:#4d8b68; background:#e2efe5; color:#173f32; }
 .quiz-options button.wrong { border-color:#b57362; background:#f4e5df; color:#5c3028; }
