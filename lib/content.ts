@@ -40,7 +40,7 @@ export const subjects = [
 /** Number of Abu Bakr lessons with from-scratch draft content (pending scholarly review). */
 export const AVAILABLE_ABU_BAKR = 17;
 /** Number of Seerah lessons with from-scratch draft content (pending scholarly review). */
-export const AVAILABLE_SEERAH = 6;
+export const AVAILABLE_SEERAH = 10;
 
 const pending = {
   ar: "النص التعليمي لهذه البطاقة ينتظر التوثيق والمراجعة العلمية قبل نشره. يمكنك الآن استكشاف شكل الدرس وطريقة التعلّم دون عرض مادة غير معتمدة.",
