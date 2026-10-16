@@ -33,7 +33,7 @@ export type Path = {
 };
 
 export const subjects = [
-  { id: "seerah", mark: "س", title: { ar: "السيرة", en: "Seerah" }, note: { ar: "قيد الإعداد", en: "In development" } },
+  { id: "seerah", mark: "س", title: { ar: "السيرة", en: "Seerah" }, note: { ar: "سيرة النبي ﷺ", en: "The Prophet’s biography" } },
   { id: "sahabah", mark: "ص", title: { ar: "الصحابة", en: "Sahabah" }, note: { ar: "سير وتراجم", en: "Biographies" } },
 ] as const;
 

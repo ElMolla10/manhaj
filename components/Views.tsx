@@ -39,7 +39,6 @@ export function SubjectView({ id, lang }: { id: string; lang: Lang }) {
   if(!available.length) return <ComingSoon id={id} lang={lang}/>;
   return <main className="page main"><div className={`subject-banner ${id}`}><span className="subject-hero-mark">{subject.mark}</span><div><span className="eyebrow">{en?"LEARNING PATHS":"مسارات التعلّم"}</span><h1>{t(subject.title,lang)}</h1><p>{en?"Structured learning that respects evidence, chronology and context.":"تعلم منظم يراعي الدليل والتسلسل والسياق."}</p></div></div>
     <section className="section"><SectionHead title={en?"Available now":"متاح الآن"} subtitle={en?"Reviewed content is added progressively.":"تُضاف المواد المعتمدة تدريجيًا."}/><div className="path-cards">{available.map(path=><PathCard key={path.id} path={path} lang={lang}/>)}</div></section>
-    <section className="section"><SectionHead title={en?"Planned paths":"المسارات المخططة"}/><div className="planned-grid">{Array.from({length:6},(_,i)=><div className="planned-card" key={i}><span>{String(i+2).padStart(2,"0")}</span><div><b>{en?"Learning path":"مسار تعلّم"}</b><small>{en?"In development":"قيد الإعداد"}</small></div></div>)}</div><div className="honest-state">{en?"No unreviewed lesson text is used to fill unfinished paths.":"لا نملأ المسارات غير المكتملة بنصوص دينية غير مراجعة."}</div></section>
   </main>;
 }
 

@@ -54,3 +54,16 @@ test("from-scratch Abu Bakr lessons render with the draft banner", async () => {
     assert.match(html, /internal_unapproved/);
   }
 });
+
+test("subject pages show real courses only — no planned-path placeholders", async () => {
+  for (const path of ["/seerah", "/sahabah", "/"]) {
+    const html = await (await getPage(path)).text();
+    assert.doesNotMatch(html, /المسارات المخططة|Planned paths/);
+    assert.doesNotMatch(html, /لا نملأ المسارات غير المكتملة|No unreviewed lesson text is used to fill unfinished paths/);
+    assert.doesNotMatch(html, /planned-grid|planned-card/);
+  }
+  const seerah = await (await getPage("/seerah")).text();
+  assert.match(seerah, /السيرة النبوية|The Prophetic Biography/);
+  const sahabah = await (await getPage("/sahabah")).text();
+  assert.match(sahabah, /أبو بكر|Abu Bakr/);
+});
