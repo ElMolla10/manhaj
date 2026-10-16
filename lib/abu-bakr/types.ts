@@ -13,6 +13,8 @@ export type Grading =
   | "editor_cites_sahihayn"   // the edition's editor attributes it to al-Bukhari and Muslim (printed footnote)
   | "editor_cites_bukhari"    // the edition's editor attributes it to al-Bukhari (printed footnote)
   | "author_sahih_chain"      // the book's own author (not an editor) calls the chain sahih
+  | "author_munkar"          // the book's own author (not an editor) calls the report munkar, in the text
+  | "author_matruk"          // the book's own author (not an editor) calls a narrator matruk (abandoned), in the text
   | "grading_unverified";     // no grading located
 
 export const gradingLabel: Record<Grading, BiText> = {
@@ -27,6 +29,8 @@ export const gradingLabel: Record<Grading, BiText> = {
   editor_cites_sahihayn: { ar: "عزاه محقق الطبعة إلى البخاري ومسلم", en: "The edition's editor attributes it to al-Bukhari and Muslim" },
   editor_cites_bukhari: { ar: "عزاه محقق الطبعة إلى البخاري", en: "The edition's editor attributes it to al-Bukhari" },
   author_sahih_chain: { ar: "صحّح المصنف إسناده", en: "The book's author calls its chain sahih" },
+  author_munkar: { ar: "قال المصنف: منكر", en: "The book's author calls it munkar" },
+  author_matruk: { ar: "قال المصنف في راويه: متروك", en: "The book's author calls its narrator abandoned (matruk)" },
   grading_unverified: { ar: "لم يُتحقق من الدرجة", en: "Grading unverified" },
 };
 
