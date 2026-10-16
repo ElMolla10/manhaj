@@ -3,8 +3,9 @@ import type { Passage, ScratchLesson } from "./types";
 import { lesson01, lesson02, lesson03 } from "./lessons-01-03";
 import { lesson04, lesson05, lesson06 } from "./lessons-04-06";
 import { lesson07, lesson08, lesson09 } from "./lessons-07-09";
+import { lesson10, lesson11, lesson12 } from "./lessons-10-12";
 
 export const passages = passagesJson as Record<string, Passage>;
-export const scratchLessons: ScratchLesson[] = [lesson01, lesson02, lesson03, lesson04, lesson05, lesson06, lesson07, lesson08, lesson09];
+export const scratchLessons: ScratchLesson[] = [lesson01, lesson02, lesson03, lesson04, lesson05, lesson06, lesson07, lesson08, lesson09, lesson10, lesson11, lesson12];
 export const scratchBySlug: Record<string, ScratchLesson> = Object.fromEntries(scratchLessons.map(l => [l.slug, l]));
 for (const l of scratchLessons) if (l.status !== "internal_unapproved") throw new Error(`Unexpected status for ${l.slug}`);
