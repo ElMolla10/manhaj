@@ -6,9 +6,10 @@ import { s07, s08, s09, s10 } from "./lessons-07-10";
 import { s11, s12, s13, s14 } from "./lessons-11-14";
 import { s15, s16, s17 } from "./lessons-15-17";
 import { s18, s19, s20 } from "./lessons-18-20";
+import { s21, s22, s23 } from "./lessons-21-23";
 
 export const seerahPassages = passagesJson as unknown as Record<string, Passage>;
-export const seerahLessons: ScratchLesson[] = [s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20];
+export const seerahLessons: ScratchLesson[] = [s01, s02, s03, s04, s05, s06, s07, s08, s09, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23];
 export const seerahBySlug: Record<string, ScratchLesson> = Object.fromEntries(seerahLessons.map(l => [l.slug, l]));
 for (const l of seerahLessons) {
   if (l.status !== "internal_unapproved") throw new Error(`Unexpected status for ${l.slug}`);
