@@ -63,7 +63,7 @@ export const paths: Record<string, Path> = {
     ]
   },
   seerah: {
-    id:"seerah", subject:"seerah", accent:"seerah", href:"/seerah/prophetic-biography", title:{ar:"السيرة النبوية",en:"The Prophetic Biography"}, subtitle:{ar:`مسودة قيد المراجعة العلمية — ${AVAILABLE_SEERAH} من 51 درسًا`,en:`Draft pending scholarly review — ${AVAILABLE_SEERAH} of 51 lessons`},
+    id:"seerah", subject:"seerah", accent:"seerah", href:"/seerah/prophetic-biography", title:{ar:"السيرة النبوية",en:"The Prophetic Biography"}, subtitle:{ar:`مسودة قيد المراجعة العلمية — ${String(AVAILABLE_SEERAH).replace(/[0-9]/g,d=>"٠١٢٣٤٥٦٧٨٩"[+d])} من ٥١ درسًا`,en:`Draft pending scholarly review — ${AVAILABLE_SEERAH} of 51 lessons`},
     lessons:[
       ["arabia-before-islam","جزيرة العرب قبل الإسلام","Arabia Before Islam"],
       ["religion-of-the-arabs","دين العرب قبل الإسلام","The Religion of the Arabs Before Islam"],
