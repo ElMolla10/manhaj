@@ -89,7 +89,7 @@ export const lesson04: ScratchLesson = {
         ar: "روت أسماء أن أبا بكر حمل ماله كله معه — خمسة آلاف درهم أو ستة — فدخل جدّها أبو قحافة، وقد ذهب بصره، فقال: أراه قد فجعكم بماله مع نفسه. فوضعت أحجارًا في كوّة كان أبوها يضع فيها ماله وغطّتها بثوب، ووضعت يده عليها ليطمئن، قالت: ولا والله ما ترك لنا شيئًا، ولكني أردت أن أسكّن الشيخ.",
         en: "Asmaʾ related that Abu Bakr took all his money with him — five or six thousand dirhams. Her grandfather Abu Quhafah, who had lost his sight, came in and said: 'I think he has hurt you by taking his money as well as himself.' She put stones in the niche where her father kept his money, covered them with a cloth and placed the old man's hand on them to reassure him. She said: 'By Allah, he left us nothing; I only wanted to calm the old man.'",
       },
-      citations: [ { key: "ibn_hisham_p225", grading: "grading_unverified" } ],
+      citations: [ { key: "ibn_hisham_p225", grading: "umari_hasan_chain" }, { key: "umari_p211", grading: "umari_hasan_chain" } ],
     },
   ],
 };
@@ -104,7 +104,7 @@ export const lesson05: ScratchLesson = {
         ar: "ذكر ابن إسحاق أن النبي ﷺ عدّل الصفوف يوم بدر ثم رجع إلى العريش ومعه أبو بكر وحده، والنبي ﷺ يناشد ربه ما وعده من النصر، فقال أبو بكر: يا نبي الله، بعض مناشدتك ربك، فإن الله منجز لك ما وعدك. ثم قال النبي ﷺ: «أبشر يا أبا بكر، أتاك نصر الله».",
         en: "Ibn Ishaq reports that at Badr the Prophet ﷺ straightened the ranks and returned to the shelter with Abu Bakr alone, imploring his Lord for the victory He had promised. Abu Bakr said: 'O Prophet of Allah, enough of your imploring; Allah will fulfil what He promised you.' Then the Prophet ﷺ said: 'Glad tidings, Abu Bakr — Allah's help has come to you.'",
       },
-      citations: [ { key: "ibn_hisham_p300", grading: "grading_unverified" } ],
+      citations: [ { key: "ibn_hisham_p300", grading: "grading_unverified" }, { key: "umari_p362", grading: "umari_cites_muslim" } ],
     },
     { id: "uhud", kind: "context",
       title: { ar: "يوم أُحد", en: "The day of Uhud" },

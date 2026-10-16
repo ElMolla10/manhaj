@@ -15,6 +15,10 @@ export type Grading =
   | "author_sahih_chain"      // the book's own author (not an editor) calls the chain sahih
   | "author_munkar"          // the book's own author (not an editor) calls the report munkar, in the text
   | "author_matruk"          // the book's own author (not an editor) calls a narrator matruk (abandoned), in the text
+  | "umari_hasan_chain"      // Akram al-Umari (al-Sirah al-Sahihah) calls this same chain hasan
+  | "umari_cites_bukhari"    // al-Umari attributes the same report to Sahih al-Bukhari
+  | "umari_cites_muslim"     // al-Umari attributes a report of the same event to Sahih Muslim
+  | "mahdi_hasan_chain"      // Mahdi Rizq Allah calls this same (Ibn Ishaq) chain hasan
   | "grading_unverified";     // no grading located
 
 export const gradingLabel: Record<Grading, BiText> = {
@@ -31,6 +35,10 @@ export const gradingLabel: Record<Grading, BiText> = {
   author_sahih_chain: { ar: "صحّح المصنف إسناده", en: "The book's author calls its chain sahih" },
   author_munkar: { ar: "قال المصنف: منكر", en: "The book's author calls it munkar" },
   author_matruk: { ar: "قال المصنف في راويه: متروك", en: "The book's author calls its narrator abandoned (matruk)" },
+  umari_hasan_chain: { ar: "حسّن العمري إسناده", en: "al-ʿUmari grades this chain hasan" },
+  umari_cites_bukhari: { ar: "عزاه العمري إلى صحيح البخاري", en: "al-ʿUmari attributes it to Sahih al-Bukhari" },
+  umari_cites_muslim: { ar: "عزا العمري رواية الحادثة إلى صحيح مسلم", en: "al-ʿUmari attributes a report of this event to Sahih Muslim" },
+  mahdi_hasan_chain: { ar: "حسّن مهدي رزق الله إسناد ابن إسحاق", en: "Mahdi Rizq Allah grades Ibn Ishaq's chain hasan" },
   grading_unverified: { ar: "لم يُتحقق من الدرجة", en: "Grading unverified" },
 };
 
@@ -41,7 +49,7 @@ export type Citation = {
 };
 
 export type Passage = {
-  source: "bukhari" | "ibn_hisham" | "siyar" | "fadail" | "bidayah" | "raheeq" | "fusul" | "usd" | "zad" | "isaba" | "umari" | "istiab";
+  source: "bukhari" | "ibn_hisham" | "siyar" | "fadail" | "bidayah" | "raheeq" | "fusul" | "usd" | "zad" | "isaba" | "umari" | "istiab" | "mahdi";
   volume: string | null;
   page: string;
   quote: string;
@@ -87,5 +95,6 @@ export const sourceTitles: Record<Passage["source"], BiText> = {
   zad: { ar: "زاد المعاد لابن القيم", en: "Ibn al-Qayyim, Zad al-Ma'ad" },
   isaba: { ar: "الإصابة في تمييز الصحابة لابن حجر", en: "Ibn Hajar, al-Isabah fi Tamyiz al-Sahabah" },
   istiab: { ar: "الاستيعاب في معرفة الأصحاب لابن عبد البر", en: "Ibn ʿAbd al-Barr, al-Istiʿab fi Maʿrifat al-Ashab" },
+  mahdi: { ar: "السيرة النبوية في ضوء المصادر الأصلية لمهدي رزق الله", en: "Mahdi Rizq Allah, al-Sirah al-Nabawiyyah fi Daw' al-Masadir al-Asliyyah" },
   umari: { ar: "السيرة النبوية الصحيحة لأكرم ضياء العمري", en: "Akram Diya' al-Umari, al-Sirah al-Nabawiyyah al-Sahihah" },
 };

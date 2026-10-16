@@ -43,7 +43,8 @@ export const lesson07: ScratchLesson = {
       },
       citations: [
         { key: "bukhari_p1091_a", grading: "in_sahih_bukhari" },
-        { key: "ibn_hisham_p668_b", grading: "grading_unverified" },
+        { key: "ibn_hisham_p668_b", grading: "umari_cites_bukhari" },
+        { key: "umari_p555_556", grading: "umari_cites_bukhari" },
       ],
       flags: [
         { kind: "conflict", text: { ar: "في البخاري قول «فعقرت حتى…» منسوب إلى عمر (عن سعيد بن المسيب)، وفي مقطع ابن هشام منسوب إلى أبي هريرة. لم نرجّح بينهما.", en: "In al-Bukhari the words 'I was so stunned that [I fell]…' are attributed to ʿUmar (via Saʿid ibn al-Musayyib); in the Ibn Hisham extract they are attributed to Abu Hurayrah. Not resolved here." } },
