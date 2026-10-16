@@ -57,7 +57,15 @@ export default function ScratchLessonView({ lesson, lang, base }: { lesson: Scra
           {c.citations.length > 0 && c.kind !== "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}>⌕ {en ? `How do we know this? (${c.citations.length} source${c.citations.length > 1 ? "s" : ""})` : `كيف نعرف ذلك؟ (${c.citations.length})`}</button>}
           {evidence && <div className="evidence-panel">{c.citations.map((ci, i) => <CitationItem key={i} c={ci} lang={lang} />)}<small>{en ? "Arabic passages are quoted verbatim from the edition cited. English text on the card is a draft rendering, not a reviewed translation." : "النصوص العربية منقولة بحروفها من الطبعة المذكورة."}</small></div>}
         </article>
-        <div className="lesson-controls"><button onClick={() => go(card - 1)} disabled={card === 0}>{en ? "Previous" : "السابق"}</button><div><span>{card + 1}/{lesson.cards.length}</span></div>{card < lesson.cards.length - 1 ? <button className="next" onClick={() => go(card + 1)}>{en ? "Next" : "التالي"}</button> : next ? <a className="next" href={`${base}/${next.slug}`}>{en ? "Next lesson" : "الدرس التالي"}</a> : <a className="next" href={base}>{en ? "Back to path" : "العودة إلى المسار"}</a>}</div>
+        <div className="lesson-controls sl-controls">
+          <button className="sl-btn sl-prev" onClick={() => go(card - 1)} disabled={card === 0}><span aria-hidden="true">{en ? "←" : "→"}</span>{en ? "Previous" : "السابق"}</button>
+          <div className="sl-counter" aria-label={en ? `Card ${card + 1} of ${lesson.cards.length}` : `البطاقة ${card + 1} من ${lesson.cards.length}`}><b>{card + 1}/{lesson.cards.length}</b><i>{en ? "Lesson progress" : "تقدّم الدرس"}</i></div>
+          {card < lesson.cards.length - 1
+            ? <button className="sl-btn sl-next" onClick={() => go(card + 1)}>{en ? "Next" : "التالي"}<span aria-hidden="true">{en ? "→" : "←"}</span></button>
+            : next
+              ? <a className="sl-btn sl-next sl-main" href={`${base}/${next.slug}`}>{en ? "Next lesson" : "الدرس التالي"}<span aria-hidden="true">{en ? "→" : "←"}</span></a>
+              : <button className="sl-btn sl-next sl-main" disabled title={en ? "This is the last lesson" : "هذا آخر درس"}>{en ? "Next lesson" : "الدرس التالي"}<span aria-hidden="true">{en ? "→" : "←"}</span></button>}
+        </div>
         {lesson.quiz && <button className="primary-btn quiz-start" onClick={() => setQuiz(true)}>{en ? `Check your understanding (${lesson.quiz.length} questions)` : `اختبر فهمك (${lesson.quiz.length} أسئلة)`}</button>}
         </>}
       </section>
