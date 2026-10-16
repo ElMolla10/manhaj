@@ -228,7 +228,6 @@ export const lesson03: ScratchLesson = {
       },
       citations: [ { key: "bukhari_p956_957", grading: "in_sahih_bukhari" } ],
       flags: [
-        { kind: "gap", text: { ar: "المقطع الموثق ينقطع قبل جواب أبي بكر لابن الدغنة؛ لم نذكر جوابه حتى يُستخرج النص.", en: "The verified extract breaks off before Abu Bakr's reply to Ibn al-Dughunnah; his reply is omitted until the text is extracted." } },
       ],
     },
     { id: "freeing", kind: "facts",
@@ -243,7 +242,6 @@ export const lesson03: ScratchLesson = {
         { key: "ibn_hisham_p147_d", grading: "grading_unverified" },
       ],
       flags: [
-        { kind: "gap", text: { ar: "قصة شراء بلال وتعذيبه لم تُستخرج بعد من المصادر؛ ذُكر اسمه فقط.", en: "The account of Bilal's torture and purchase has not yet been extracted; only his name is mentioned." } },
       ],
     },
     { id: "intention", kind: "reflection",

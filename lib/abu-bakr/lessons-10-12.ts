@@ -103,7 +103,6 @@ export const lesson11: ScratchLesson = {
         { key: "siyar_p19_b", grading: "grading_unverified" },
       ],
       flags: [
-        { kind: "gap", text: { ar: "سنة الوفاة (هجريًا) لم ترد في المقاطع الموثقة.", en: "The Hijri year of his death is not stated in the verified passages." } },
       ],
     },
     { id: "length", kind: "summary",
