@@ -13,7 +13,7 @@ def src(t):
 out = {}
 for k in keys:
     e = idx[k]  # KeyError = citing a passage that does not exist -> fail loudly
-    out[k] = {"source": src(e["source_title"]), "volume": e["volume"], "page": e["printed_page"], "quote": e["arabic_passage"],
+    out[k] = {"source": src(e["source_title"]), "volume": None if e["volume"] is None else str(e["volume"]), "page": e["printed_page"], "quote": e["arabic_passage"],
               "gradingNote": e["existing_grading_if_stated"], "gradedBy": e["graded_by"]}
 json.dump(out, open(root / "lib/abu-bakr/passages.json", "w"), ensure_ascii=False, indent=1)
 print(len(out), "passages")
