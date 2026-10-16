@@ -10,6 +10,8 @@ export type Grading =
   | "no_chain_stated"         // e.g. Ibn Ishaq "فيما بلغني" / "يُقال" — no chain given in the source
   | "source_cites_sahihayn"   // the source's author attributes it to al-Bukhari and Muslim (stated in the text)
   | "source_cites_bukhari"    // the source's author attributes it to Sahih al-Bukhari (stated in a footnote/text)
+  | "editor_cites_sahihayn"   // the edition's editor attributes it to al-Bukhari and Muslim (printed footnote)
+  | "editor_cites_bukhari"    // the edition's editor attributes it to al-Bukhari (printed footnote)
   | "author_sahih_chain"      // the book's own author (not an editor) calls the chain sahih
   | "grading_unverified";     // no grading located
 
@@ -22,6 +24,8 @@ export const gradingLabel: Record<Grading, BiText> = {
   no_chain_stated: { ar: "رواية بلا إسناد مذكور", en: "Reported without a stated chain" },
   source_cites_sahihayn: { ar: "عزاه المصنف إلى الصحيحين", en: "The author attributes it to al-Bukhari and Muslim" },
   source_cites_bukhari: { ar: "عزاه المصنف إلى صحيح البخاري", en: "The author attributes it to Sahih al-Bukhari" },
+  editor_cites_sahihayn: { ar: "عزاه محقق الطبعة إلى البخاري ومسلم", en: "The edition's editor attributes it to al-Bukhari and Muslim" },
+  editor_cites_bukhari: { ar: "عزاه محقق الطبعة إلى البخاري", en: "The edition's editor attributes it to al-Bukhari" },
   author_sahih_chain: { ar: "صحّح المصنف إسناده", en: "The book's author calls its chain sahih" },
   grading_unverified: { ar: "لم يُتحقق من الدرجة", en: "Grading unverified" },
 };
@@ -33,7 +37,7 @@ export type Citation = {
 };
 
 export type Passage = {
-  source: "bukhari" | "ibn_hisham" | "siyar" | "fadail" | "bidayah" | "raheeq" | "fusul" | "usd" | "zad" | "isaba" | "umari";
+  source: "bukhari" | "ibn_hisham" | "siyar" | "fadail" | "bidayah" | "raheeq" | "fusul" | "usd" | "zad" | "isaba" | "umari" | "istiab";
   volume: string | null;
   page: string;
   quote: string;
@@ -78,5 +82,6 @@ export const sourceTitles: Record<Passage["source"], BiText> = {
   usd: { ar: "أسد الغابة لابن الأثير", en: "Ibn al-Athir, Usd al-Ghabah" },
   zad: { ar: "زاد المعاد لابن القيم", en: "Ibn al-Qayyim, Zad al-Ma'ad" },
   isaba: { ar: "الإصابة في تمييز الصحابة لابن حجر", en: "Ibn Hajar, al-Isabah fi Tamyiz al-Sahabah" },
+  istiab: { ar: "الاستيعاب في معرفة الأصحاب لابن عبد البر", en: "Ibn ʿAbd al-Barr, al-Istiʿab fi Maʿrifat al-Ashab" },
   umari: { ar: "السيرة النبوية الصحيحة لأكرم ضياء العمري", en: "Akram Diya' al-Umari, al-Sirah al-Nabawiyyah al-Sahihah" },
 };

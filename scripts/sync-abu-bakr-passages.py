@@ -7,7 +7,7 @@ root = pathlib.Path(__file__).resolve().parent.parent
 idx = json.load(open(pathlib.Path(sys.argv[1]) / "content_research/_master_citation_index.json"))["entries"]
 keys = sorted({k for f in glob.glob(str(root / "lib/abu-bakr/*.ts")) for k in re.findall(r'"([a-z_0-9]+)"', open(f).read()) if k in idx})
 def src(t):
-    for needle, s in (("البخاري", "bukhari"), ("هشام", "ibn_hisham"), ("سير أعلام", "siyar"), ("فضائل", "fadail"), ("البداية", "bidayah"), ("الرحيق", "raheeq"), ("الفصول", "fusul"), ("أسد الغابة", "usd"), ("زاد المعاد", "zad"), ("الإصابة", "isaba"), ("الصحيحة", "umari")):
+    for needle, s in (("البخاري", "bukhari"), ("هشام", "ibn_hisham"), ("سير أعلام", "siyar"), ("فضائل", "fadail"), ("البداية", "bidayah"), ("الرحيق", "raheeq"), ("الفصول", "fusul"), ("أسد الغابة", "usd"), ("زاد المعاد", "zad"), ("الإصابة", "isaba"), ("الصحيحة", "umari"), ("الاستيعاب", "istiab")):
         if needle in t: return s
     raise SystemExit("unknown source " + t)
 out = {}
