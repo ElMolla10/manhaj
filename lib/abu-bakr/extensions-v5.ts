@@ -54,7 +54,7 @@ export const v5: Record<number, V5> = {
 };
 
 export const lesson13: ScratchLesson = {
-  number: 13, slug: "lesson-13", status: "internal_unapproved",
+  number: 12, slug: "lesson-12", status: "internal_unapproved",
   title: { ar: "كيف حكم: العطاء والعمّال وتركة النبي ﷺ", en: "How He Governed: Stipend, Officials and the Prophet's ﷺ Estate" },
   cards: [
     card("stipend", "facts", "من أين يُطعم عياله؟", "'How will I feed my family?'",

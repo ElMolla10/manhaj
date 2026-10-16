@@ -8,7 +8,7 @@ export const ext07: LessonExtension = {
       card("day-narrative", "narrative", "اليوم كما ترويه المصادر بالترتيب", "The day in sequence, as the sources tell it",
         "يوم الإثنين صلّى أبو بكر بالناس الصبح وخرج النبي ﷺ فصلّى قاعدًا إلى جنبه، ثم استأذن أبو بكر فخرج إلى أهله بالسُّنح. ورجع النبي ﷺ إلى بيت عائشة فاضطجع في حجرها، ودخل رجل من آل أبي بكر بسواك فليّنته له فاستنّ به، ثم قال: «بل الرفيق الأعلى من الجنة»، وقُبض. فقام عمر يقول إنه لم يمت. وأقبل أبو بكر من السنح فدخل فقبّله وقال: «أما الموتة التي كتب الله عليك فقد ذقتها»، ثم خرج فخطب الناس وتلا آية آل عمران، فأخذها الناس عنه.",
         "On the Monday Abu Bakr led the dawn prayer and the Prophet ﷺ came out and prayed seated beside him; then Abu Bakr took leave and went to his family at al-Sunh. The Prophet ﷺ returned to ʿAʾishah's house and lay in her lap; a man of Abu Bakr's family came in with a tooth-stick, she softened it for him and he used it, then said 'Rather, the Highest Companion in Paradise', and passed away. ʿUmar stood saying he had not died. Abu Bakr came from al-Sunh, went in, kissed him and said 'The death Allah wrote for you, you have tasted', then went out, addressed the people and recited the verse of Al ʿImran, and the people took it from him.",
-        [ci("ibn_hisham_p667_c"), ci("ibn_hisham_p667_b"), ci("ibn_hisham_p667_a"), ci("ibn_hisham_p668_c"), ci("ibn_hisham_p668_a"), ci("ibn_hisham_p668_b")]),
+        [ci("ibn_hisham_p667_c"), ci("ibn_hisham_p667_b"), ci("ibn_hisham_p667_a"), ci("ibn_hisham_p668_c"), ci("ibn_hisham_p668_a"), ci("ibn_hisham_p668_b", "umari_cites_bukhari"), ci("umari_p555_556", "umari_cites_bukhari")]),
     ],
   },
   append: [

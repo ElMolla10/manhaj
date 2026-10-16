@@ -18,7 +18,7 @@ export const ext01: LessonExtension = {
       card("wealth", "narrative", "ماله في سبيل الله", "His wealth in Allah's cause",
         "قال عروة بن الزبير: أسلم أبو بكر يوم أسلم وله أربعون ألف دينار. وقال النبي ﷺ في خطبته إن أمنّ الناس عليه في صحبته وماله أبو بكر. ولما خرج مهاجرًا حمل ماله كله معه، خمسة آلاف درهم أو ستة، كما روت ابنته أسماء.",
         "ʿUrwah ibn al-Zubayr said: Abu Bakr accepted Islam on the day he did with forty thousand dinars. The Prophet ﷺ said in a sermon that the person most generous to him in companionship and wealth was Abu Bakr. When he set out on the Hijrah he took all his money with him — five or six thousand dirhams — as his daughter Asmaʾ related.",
-        [ci("siyar_p8"), ci("bukhari_p899_a", B), ci("ibn_hisham_p225")],
+        [ci("siyar_p8"), ci("bukhari_p899_a", B), ci("ibn_hisham_p225", "umari_hasan_chain"), ci("umari_p211", "umari_hasan_chain", "لذلك فإن السند حسن.")],
         [fl("no_chain", "قول عروة نقله الذهبي دون إسناد في المقطع، وعروة تابعي لم يشهد إسلام أبي بكر.", "ʿUrwah's statement is quoted by al-Dhahabi without a chain in the extract; ʿUrwah was a Tabiʿi and did not witness Abu Bakr's conversion.")]),
     ],
   },

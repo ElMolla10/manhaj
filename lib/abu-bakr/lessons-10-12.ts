@@ -121,22 +121,22 @@ export const lesson11: ScratchLesson = {
 };
 
 export const lesson12: ScratchLesson = {
-  number: 12, slug: "lesson-12", status: "internal_unapproved",
+  number: 17, slug: "lesson-17", status: "internal_unapproved",
   title: { ar: "مراجعة الخط الزمني", en: "Timeline Review" },
   cards: [
     { id: "timeline", kind: "map",
       title: { ar: "المحطات بالترتيب", en: "The milestones in order" },
       body: {
-        ar: "مراجعة دون معلومات جديدة: (١) نسبه ومكانته في قريش — الدرس ١. (٢) إسلامه ودعوته — الدرس ٢. (٣) الثبات وعتق المستضعفين — الدرس ٣. (٤) الهجرة والغار — الدرس ٤. (٥) بدر وأحد — الدرس ٥. (٦) مرض النبي ﷺ وإمامته الصلاة — الدرس ٦. (٧) يوم الوفاة وخطبته — الدرس ٧. (٨) السقيفة والبيعة — الدرس ٨. (٩) جيش أسامة ومانعو الزكاة — الدرس ٩. (١٠) جمع القرآن — الدرس ١٠. (١١) العهد إلى عمر ووفاته — الدرس ١١.",
-        en: "Review with no new information: (1) lineage and standing in Quraysh — lesson 1; (2) his Islam and da'wah — lesson 2; (3) steadfastness and freeing the oppressed — lesson 3; (4) the Hijrah and the cave — lesson 4; (5) Badr and Uhud — lesson 5; (6) the Prophet's ﷺ illness and Abu Bakr leading prayer — lesson 6; (7) the day of death and his address — lesson 7; (8) the Saqifah and the pledge — lesson 8; (9) Usamah's army and those withholding zakah — lesson 9; (10) compiling the Qur'an — lesson 10; (11) appointing ʿUmar and his death — lesson 11.",
+        ar: "مراجعة دون معلومات جديدة: (١) نسبه ومكانته في قريش — الدرس ١. (٢) إسلامه ودعوته — الدرس ٢. (٣) الثبات وعتق المستضعفين — الدرس ٣. (٤) الهجرة والغار — الدرس ٤. (٥) بدر وأحد — الدرس ٥. (٦) مرض النبي ﷺ وإمامته الصلاة — الدرس ٦. (٧) يوم الوفاة وخطبته — الدرس ٧. (٨) السقيفة والبيعة — الدرس ٨. (٩) جيش أسامة ومانعو الزكاة — الدرس ٩. (١٠) جمع القرآن — الدرس ١٠. (١١) العهد إلى عمر ووفاته — الدرس ١١. ثم دروس موضوعية: (١٢) كيف حكم: العطاء والعمّال وتركة النبي ﷺ. (١٣) أسرته. (١٤) أقواله وخطبه. (١٥) أخلاقه وزهده. (١٦) فتوح العراق (من المحرم سنة ١٢) والشام (أول سنة ١٣)، ووصول خبر وفاته يوم اليرموك.",
+        en: "Review with no new information: (1) lineage and standing in Quraysh — lesson 1; (2) his Islam and da'wah — lesson 2; (3) steadfastness and freeing the oppressed — lesson 3; (4) the Hijrah and the cave — lesson 4; (5) Badr and Uhud — lesson 5; (6) the Prophet's ﷺ illness and Abu Bakr leading prayer — lesson 6; (7) the day of death and his address — lesson 7; (8) the Saqifah and the pledge — lesson 8; (9) Usamah's army and those withholding zakah — lesson 9; (10) compiling the Qur'an — lesson 10; (11) appointing ʿUmar and his death — lesson 11. Then thematic lessons: (12) how he governed — stipend, officials and the Prophet's ﷺ estate; (13) his family; (14) his sayings and sermons; (15) his character and asceticism; (16) the conquests of Iraq (from Muharram 12 AH) and Syria (early 13 AH), with news of his death reaching Yarmuk.",
       },
       citations: [],
     },
     { id: "open", kind: "summary",
       title: { ar: "ما بقي مفتوحًا للمراجعة", en: "What remains open for review" },
       body: {
-        ar: "مواضع الاختلاف المعلّمة في الدروس: ترتيبه بين أوائل المسلمين، ولفظ «ذات النطاق/النطاقين»، ومقدار ما جعلته قريش في طلبه، ومن قال «فعقرت» يوم الوفاة، ومسألة الاستخلاف، وبيعة عليّ، وقضية مالك بن نويرة، ومدة الخلافة. هذه تُحسم بالمراجعة العلمية لا في هذا الدرس.",
-        en: "Points of difference flagged in the lessons: his order among the first Muslims; 'waistband' vs 'two waistbands'; the bounty Quraysh set; who said 'I was stunned' on the day of death; the succession question; ʿAli's pledge; the Malik ibn Nuwayrah affair; and the length of the caliphate. These are for scholarly review, not settled here.",
+        ar: "مواضع الاختلاف المعلّمة في الدروس: ترتيبه بين أوائل المسلمين، ولفظ «ذات النطاق/النطاقين»، ومقدار ما جعلته قريش في طلبه، ومن قال «فعقرت» يوم الوفاة، ومسألة الاستخلاف، وبيعة عليّ، وقضية مالك بن نويرة، ومدة الخلافة، ومقدار عطائه، وتاريخ اليمامة، وهل حجّ في خلافته. هذه تُحسم بالمراجعة العلمية لا في هذا الدرس.",
+        en: "Points of difference flagged in the lessons: his order among the first Muslims; 'waistband' vs 'two waistbands'; the bounty Quraysh set; who said 'I was stunned' on the day of death; the succession question; ʿAli's pledge; the Malik ibn Nuwayrah affair; the length of the caliphate; the amount of his stipend; the date of Yamamah; and whether he performed Hajj as caliph. These are for scholarly review, not settled here.",
       },
       citations: [],
     },
