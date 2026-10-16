@@ -18,6 +18,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400..800&family=Source+Sans+3:wght@400..800&family=Source+Serif+4:opsz,wght@8..60,500..700&display=swap" />
+      </head>
       <body className="antialiased">{children}</body>
     </html>
   );
