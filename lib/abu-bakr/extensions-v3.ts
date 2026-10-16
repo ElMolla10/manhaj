@@ -47,7 +47,7 @@ export const v3: Record<number, V3> = {
         card("isra-learn", "lesson", "ماذا نتعلّم؟ (تأمل)", "What we learn (reflection)",
           "تأمل لا رواية: النص نفسه يقابل بين من ارتدّ لما سمع الخبر وبين أبي بكر الذي جعل تصديقه بالوحي أساسًا لتصديقه بما هو أقرب، ويربط ابن الأثير لقبه «الصدّيق» بهذا الموقف.",
           "A reflection, not a report: the text itself contrasts those who turned back on hearing the news with Abu Bakr, who made his belief in revelation the ground for believing the nearer matter — and Ibn al-Athir ties his title al-Siddiq to this very stance.",
-          [ci("usd_p701", "grading_unverified", "فلذلك سمي أبو بكر الصديق")]),
+          [ci("usd_p701", "grading_unverified", "فلذلك سمي أبو بكر الصديق"), ci("umari_p192", "umari_says_sahih", "لئن قال ذلك لقد صدق")]),
       ],
     },
     quiz: [
