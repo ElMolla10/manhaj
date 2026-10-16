@@ -9,6 +9,8 @@ export type Grading =
   | "editor_very_weak"        // printed editor/grader says very weak
   | "no_chain_stated"         // e.g. Ibn Ishaq "فيما بلغني" / "يُقال" — no chain given in the source
   | "source_cites_sahihayn"   // the source's author attributes it to al-Bukhari and Muslim (stated in the text)
+  | "source_cites_bukhari"    // the source's author attributes it to Sahih al-Bukhari (stated in a footnote/text)
+  | "author_sahih_chain"      // the book's own author (not an editor) calls the chain sahih
   | "grading_unverified";     // no grading located
 
 export const gradingLabel: Record<Grading, BiText> = {
@@ -19,6 +21,8 @@ export const gradingLabel: Record<Grading, BiText> = {
   editor_very_weak: { ar: "ضعيف جدًا عند محقق الطبعة", en: "Graded very weak by the edition's editor" },
   no_chain_stated: { ar: "رواية بلا إسناد مذكور", en: "Reported without a stated chain" },
   source_cites_sahihayn: { ar: "عزاه المصنف إلى الصحيحين", en: "The author attributes it to al-Bukhari and Muslim" },
+  source_cites_bukhari: { ar: "عزاه المصنف إلى صحيح البخاري", en: "The author attributes it to Sahih al-Bukhari" },
+  author_sahih_chain: { ar: "صحّح المصنف إسناده", en: "The book's author calls its chain sahih" },
   grading_unverified: { ar: "لم يُتحقق من الدرجة", en: "Grading unverified" },
 };
 
@@ -29,7 +33,7 @@ export type Citation = {
 };
 
 export type Passage = {
-  source: "bukhari" | "ibn_hisham" | "siyar" | "fadail" | "bidayah" | "raheeq" | "fusul" | "usd" | "zad";
+  source: "bukhari" | "ibn_hisham" | "siyar" | "fadail" | "bidayah" | "raheeq" | "fusul" | "usd" | "zad" | "isaba" | "umari";
   volume: string | null;
   page: string;
   quote: string;
@@ -73,4 +77,6 @@ export const sourceTitles: Record<Passage["source"], BiText> = {
   fusul: { ar: "الفصول في سيرة الرسول لابن كثير", en: "Ibn Kathir, al-Fusul fi Sirat al-Rasul" },
   usd: { ar: "أسد الغابة لابن الأثير", en: "Ibn al-Athir, Usd al-Ghabah" },
   zad: { ar: "زاد المعاد لابن القيم", en: "Ibn al-Qayyim, Zad al-Ma'ad" },
+  isaba: { ar: "الإصابة في تمييز الصحابة لابن حجر", en: "Ibn Hajar, al-Isabah fi Tamyiz al-Sahabah" },
+  umari: { ar: "السيرة النبوية الصحيحة لأكرم ضياء العمري", en: "Akram Diya' al-Umari, al-Sirah al-Nabawiyyah al-Sahihah" },
 };
