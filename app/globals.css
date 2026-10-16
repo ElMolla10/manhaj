@@ -49,7 +49,7 @@ button { color: inherit; }
 .resume-card h2 { font-size: 30px; line-height: 1.45; margin: 70px 0 12px; }
 .resume-card p { color: #c8d6ce; line-height: 1.8; margin: 0; }
 .progress-line { height: 7px; background: rgba(255,255,255,.13); border-radius: 999px; margin: 25px 0 9px; overflow:hidden; }
-.progress-line span { display:block; width:24%; height:100%; border-radius:inherit; background:#d6bb7b; }
+.progress-line span { display:block; width:var(--p,0%); height:100%; border-radius:inherit; background:#d6bb7b; }
 .progress-meta { display:flex; justify-content:space-between; color:#cbd8d0; font-size:12px; }
 .resume-action { position:relative; z-index:1; display:block; text-align:center; margin-top: 27px; background:#fff9eb; color:var(--green); border:0; border-radius:14px; padding:13px 17px; font-weight:800; width:100%; cursor:pointer; }
 .section { margin-top: 66px; }

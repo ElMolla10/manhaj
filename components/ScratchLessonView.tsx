@@ -11,6 +11,8 @@ import { gradingLabel, sourceTitles, type Citation, type QuizQ, type ScratchLess
 
 const kindLabel: Record<string, [string, string]> = { hook: ["مدخل", "Introduction"], facts: ["حقائق", "Facts"], context: ["شرح", "Explanation"], map: ["خريطة", "Map"], reflection: ["للمراجعة", "For review"], summary: ["خلاصة", "Summary"], narrative: ["القصة", "Narrative"], glossary: ["مسرد", "Glossary"], lesson: ["تأمل — ليس رواية", "Reflection — not a source claim"] };
 
+const statusLabel: Record<string, { ar: string; en: string }> = { internal_unapproved: { ar: "مسودة قيد المراجعة العلمية", en: "Draft, pending scholarly review" } };
+
 const flagLabel = { weak: ["رواية ضعيفة", "Weak report"], conflict: ["اختلاف بين المصادر", "Sources differ"], no_chain: ["بلا إسناد مذكور", "No stated chain"], gap: ["نقص في التوثيق", "Sourcing gap"] } as const;
 
 export function DraftBanner({ lang }: { lang: Lang }) {
@@ -46,7 +48,7 @@ export default function ScratchLessonView({ lesson, lang, base, passages = abuBa
     <div className="lesson-progress"><span style={{ width: `${progress}%` }} /></div>
     <DraftBanner lang={lang} />
     <div className="lesson-grid">
-      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><span>◌</span><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small>internal_unapproved — {en ? "pending scholarly review" : "بانتظار المراجعة العلمية"}</small></div></div></aside>
+      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><span>◌</span><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small data-status={lesson.status}>{t(statusLabel[lesson.status] ?? { ar: "قيد المراجعة", en: "Under review" }, lang)}</small></div></div></aside>
       <section className="lesson-stage">
         {quiz && lesson.quiz ? <Quiz qs={lesson.quiz} lang={lang} onClose={() => setQuiz(false)} onReview={id => { setQuiz(false); go(lesson.cards.findIndex(x => x.id === id)); }} /> : <>
         <article className={`learning-card ${c.kind}`}>
