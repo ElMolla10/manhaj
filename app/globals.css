@@ -453,3 +453,24 @@ button { color: inherit; }
   .bottom-nav a { min-height:44px; justify-content:center; font-size:11px; }
   .bottom-nav a.active { color:var(--green); font-weight:800; }
 }
+
+/* Typography: refined Latin pairing for Noto Sans Arabic */
+:root { --font-ar:"Noto Sans Arabic","Geeza Pro","Segoe UI",Arial,sans-serif; --font-en:"Source Sans 3","Segoe UI",system-ui,sans-serif; --font-en-display:"Source Serif 4",Georgia,serif; }
+body { font-family:"Source Sans 3",var(--font-ar); }
+html[lang="en"] body { font-family:var(--font-en),var(--font-ar); }
+html[lang="en"] :is(h1,h2,.resume-card h2,.section h2,.subject-banner h1) { font-family:var(--font-en-display); font-weight:600; letter-spacing:-.02em; }
+html[lang="en"] .hero h1 { letter-spacing:-.03em; line-height:1.08; }
+[lang="ar"] { font-family:var(--font-ar); }
+
+/* Decorative geometric art (replaces letter monograms) */
+.subject-card { position:relative; overflow:hidden; display:flex; flex-direction:column; }
+.subject-art { display:block; width:calc(100% + 38px); height:96px; margin:-19px -19px 16px; background:var(--sage); color:var(--green-2); border-bottom:1px solid var(--line); }
+.subject-art.sahabah { background:#efe4cf; color:#9a6d2e; }
+.subject-card h3 { margin:0 0 4px; }
+.subject-card p { margin:0; color:var(--muted); }
+.subject-hero-mark { overflow:hidden; padding:0; background:var(--green); color:#d6bb7b; }
+.subject-hero-mark .pattern-art, .coming>span .pattern-art { width:100%; height:100%; display:block; }
+.coming>span { overflow:hidden; color:var(--green-2); }
+.dark-mode .subject-art { background:#24382e; color:#9cc3ad; }
+.dark-mode .subject-art.sahabah { background:#3a2f1c; color:#d6bb7b; }
+@media (max-width:560px) { .subject-art { width:calc(100% + 32px); margin:-16px -16px 14px; height:80px; } }
