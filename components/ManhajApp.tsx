@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { Lang, paths } from "@/lib/content";
+import Icon from "@/components/Icon";
 import LessonExperience from "@/components/LessonExperience";
 import ScratchLessonView from "@/components/ScratchLessonView";
 import { scratchBySlug } from "@/lib/abu-bakr";
@@ -37,10 +38,10 @@ export default function ManhajApp({ route = [] }: { route?: string[] }) {
   return <div className={dark?"site-shell dark-mode":"site-shell"}>
     <header className="topbar"><nav className="nav" aria-label={en?"Main navigation":"التنقل الرئيسي"}>
       <a className="brand" href="/"><span className="brand-mark">م</span><span>{en?"Manhaj":"منهج"}</span></a>
-      <div className="nav-links"><a className={first==="learn"?"active":""} href="/learn">{en?"Learn":"تعلّم"}</a><a className={first==="seerah"?"active":""} href="/seerah">{en?"Seerah":"السيرة"}</a><a className={first==="sahabah"?"active":""} href="/sahabah">{en?"Sahabah":"الصحابة"}</a><div className="more-menu"><button>{en?"More":"المزيد"}⌄</button><div><a href="/library">{en?"Sources":"المصادر"}</a></div></div></div>
-      <div className="nav-actions"><a className="icon-btn" href="/search" aria-label={en?"Search":"بحث"}>⌕</a><button className="icon-btn" onClick={changeTheme} aria-label={en?"Change theme":"تغيير المظهر"}>{theme==="light"?"◐":theme==="dark"?"☀":"A"}</button><button className="lang-btn" onClick={()=>setLang(v=>v==="ar"?"en":"ar")}>{en?"ع":"EN"}</button><a className="continue-btn" href="/sahabah/abu-bakr/who-was-abu-bakr">{en?"Continue learning":"تابع التعلّم"}</a></div>
+      <div className="nav-links"><a className={first==="learn"?"active":""} href="/learn">{en?"Learn":"تعلّم"}</a><a className={first==="seerah"?"active":""} href="/seerah">{en?"Seerah":"السيرة"}</a><a className={first==="sahabah"?"active":""} href="/sahabah">{en?"Sahabah":"الصحابة"}</a><div className="more-menu"><button>{en?"More":"المزيد"}<Icon name="chevronDown" size={16}/></button><div><a href="/library">{en?"Sources":"المصادر"}</a></div></div></div>
+      <div className="nav-actions"><a className="icon-btn" href="/search" aria-label={en?"Search":"بحث"} title={en?"Search":"بحث"}><Icon name="search"/></a><button className="icon-btn" onClick={changeTheme} aria-label={en?`Theme: ${theme}. Change theme`:`المظهر: ${theme==="light"?"فاتح":theme==="dark"?"داكن":"حسب النظام"}. تغيير المظهر`} title={en?"Change theme":"تغيير المظهر"}><Icon name={theme==="light"?"moon":theme==="dark"?"sun":"monitor"}/></button><button className="lang-btn" onClick={()=>setLang(v=>v==="ar"?"en":"ar")} aria-label={en?"التبديل إلى العربية":"Switch to English"} lang={en?"ar":"en"}><Icon name="languages" size={18}/><span>{en?"عربي":"EN"}</span></button><a className="continue-btn" href="/sahabah/abu-bakr/who-was-abu-bakr">{en?"Continue learning":"تابع التعلّم"}</a></div>
     </nav></header>
     {view}
-    <nav className="bottom-nav" aria-label={en?"Mobile navigation":"تنقل الهاتف"}><a className={first==="home"?"active":""} href="/"><b>⌂</b><span>{en?"Home":"الرئيسية"}</span></a><a className={first==="learn"?"active":""} href="/learn"><b>▤</b><span>{en?"Learn":"تعلّم"}</span></a><a className={first==="search"?"active":""} href="/search"><b>⌕</b><span>{en?"Search":"بحث"}</span></a><a className={first==="progress"?"active":""} href="/progress"><b>◴</b><span>{en?"Progress":"تقدّمي"}</span></a><a className={first==="settings"?"active":""} href="/settings"><b>⚙</b><span>{en?"Settings":"الإعدادات"}</span></a></nav>
+    <nav className="bottom-nav" aria-label={en?"Mobile navigation":"تنقل الهاتف"}><a className={first==="home"?"active":""} href="/"><Icon name="home" size={22}/><span>{en?"Home":"الرئيسية"}</span></a><a className={first==="learn"?"active":""} href="/learn"><Icon name="book" size={22}/><span>{en?"Learn":"تعلّم"}</span></a><a className={first==="search"?"active":""} href="/search"><Icon name="search" size={22}/><span>{en?"Search":"بحث"}</span></a><a className={first==="progress"?"active":""} href="/progress"><Icon name="progress" size={22}/><span>{en?"Progress":"تقدّمي"}</span></a><a className={first==="settings"?"active":""} href="/settings"><Icon name="settings" size={22}/><span>{en?"Settings":"الإعدادات"}</span></a></nav>
   </div>;
 }

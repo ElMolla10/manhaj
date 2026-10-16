@@ -4,6 +4,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Lang, Path, paths, subjects, t } from "@/lib/content";
 import { scratchBySlug } from "@/lib/abu-bakr";
+import Icon from "@/components/Icon";
 
 const arSteps = ["السيرة النبوية", "أبو بكر الصديق"];
 const enSteps = ["The Prophetic Biography", "Abu Bakr al-Siddiq"];
@@ -57,7 +58,7 @@ export function SearchView({ lang }: { lang: Lang }) {
   const en=lang==="en"; const [query,setQuery]=useState("");
   const records=useMemo(()=>[{type:en?"Learning path":"مسار",title:t(paths.seerah.title,lang),text:t(paths.seerah.subtitle,lang),href:paths.seerah.href},{type:en?"Person":"شخصية",title:t(paths.abuBakr.title,lang),text:t(paths.abuBakr.subtitle,lang),href:"/sahabah/abu-bakr"},{type:en?"Lesson":"درس",title:t(paths.abuBakr.lessons[0].title,lang),text:en?"Prototype lesson (placeholder)":"درس تجريبي (بدون محتوى)",href:"/sahabah/abu-bakr/who-was-abu-bakr"}], [en,lang]);
   const results=query.trim()?records.filter(r=>(r.title+r.text+r.type).toLowerCase().includes(query.toLowerCase())):records;
-  return <main className="page main narrow"><PageTitle eyebrow={en?"SEARCH":"البحث"} title={en?"Find a path, person or idea":"ابحث عن مسار أو شخصية أو فكرة"} text={en?"Search results are grouped by their role in the curriculum.":"تُعرض النتائج حسب موقعها في المنهج."}/><div className="big-search"><span>⌕</span><input autoFocus value={query} onChange={e=>setQuery(e.target.value)} placeholder={en?"Try ‘Abu Bakr’ or ‘Seerah’…":"جرّب «أبو بكر» أو «السيرة»…"}/><kbd>⌘ K</kbd></div><div className="search-results"><div className="result-count">{results.length} {en?"results":"نتائج"}</div>{results.map(r=><a href={r.href} className="result" key={r.href}><span className="result-type">{r.type}</span><div><h3>{r.title}</h3><p>{r.text}</p></div><b>←</b></a>)}{!results.length&&<Empty title={en?"No results yet":"لا توجد نتائج"} text={en?"Try another spelling or browse the curriculum.":"جرّب كتابة مختلفة أو تصفح المنهج."}/>}</div></main>;
+  return <main className="page main narrow"><PageTitle eyebrow={en?"SEARCH":"البحث"} title={en?"Find a path, person or idea":"ابحث عن مسار أو شخصية أو فكرة"} text={en?"Search results are grouped by their role in the curriculum.":"تُعرض النتائج حسب موقعها في المنهج."}/><div className="big-search"><Icon name="search" size={22}/><input autoFocus value={query} onChange={e=>setQuery(e.target.value)} placeholder={en?"Try ‘Abu Bakr’ or ‘Seerah’…":"جرّب «أبو بكر» أو «السيرة»…"}/><kbd>⌘ K</kbd></div><div className="search-results"><div className="result-count">{results.length} {en?"results":"نتائج"}</div>{results.map(r=><a href={r.href} className="result" key={r.href}><span className="result-type">{r.type}</span><div><h3>{r.title}</h3><p>{r.text}</p></div><b>←</b></a>)}{!results.length&&<Empty title={en?"No results yet":"لا توجد نتائج"} text={en?"Try another spelling or browse the curriculum.":"جرّب كتابة مختلفة أو تصفح المنهج."}/>}</div></main>;
 }
 
 export function UtilityView({ id, lang }: { id:string;lang:Lang }) {

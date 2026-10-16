@@ -437,3 +437,19 @@ button { color: inherit; }
   .draft-banner { margin-inline:14px !important; }
   .learning-card h2 { margin:22px 0 12px; }
 }
+
+/* SVG icons */
+.icon { flex:none; display:block; }
+.icon-btn { color:var(--green); }
+.lang-btn { display:inline-flex; align-items:center; gap:6px; font-size:14px; }
+.more-menu>button { display:inline-flex; align-items:center; gap:3px; }
+.evidence-btn { display:inline-flex; align-items:center; gap:7px; }
+.content-safety b { display:inline-flex; align-items:center; gap:6px; }
+.review-state>.icon { margin-top:2px; }
+.big-search>.icon { color:var(--muted); justify-self:center; }
+.source-note { display:flex; align-items:flex-start; gap:8px; }
+@media (max-width: 900px) {
+  .bottom-nav .icon { color:var(--green); }
+  .bottom-nav a { min-height:44px; justify-content:center; font-size:11px; }
+  .bottom-nav a.active { color:var(--green); font-weight:800; }
+}

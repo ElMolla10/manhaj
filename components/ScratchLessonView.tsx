@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { Lang, t } from "@/lib/content";
+import Icon from "@/components/Icon";
 import { passages as abuBakrPassages, scratchLessons as abuBakrLessons } from "@/lib/abu-bakr";
 import type { Passage } from "@/lib/abu-bakr/types";
 
@@ -48,7 +49,7 @@ export default function ScratchLessonView({ lesson, lang, base, passages = abuBa
     <div className="lesson-progress"><span style={{ width: `${progress}%` }} /></div>
     <DraftBanner lang={lang} />
     <div className="lesson-grid">
-      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><span>◌</span><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small data-status={lesson.status}>{t(statusLabel[lesson.status] ?? { ar: "قيد المراجعة", en: "Under review" }, lang)}</small></div></div></aside>
+      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><Icon name="clock" size={18}/><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small data-status={lesson.status}>{t(statusLabel[lesson.status] ?? { ar: "قيد المراجعة", en: "Under review" }, lang)}</small></div></div></aside>
       <section className="lesson-stage">
         {quiz && lesson.quiz ? <Quiz qs={lesson.quiz} lang={lang} onClose={() => setQuiz(false)} onReview={id => { setQuiz(false); go(lesson.cards.findIndex(x => x.id === id)); }} /> : <>
         <article className={`learning-card ${c.kind}`}>
@@ -56,10 +57,10 @@ export default function ScratchLessonView({ lesson, lang, base, passages = abuBa
           <h2>{t(c.title, lang)}</h2>
           <p className="card-body">{t(c.body, lang)}</p>
           {c.glossary && <dl className="glossary">{c.glossary.map((gl, i) => <div key={i} style={{ margin: "10px 0" }}><dt><b>{t(gl.term, lang)}</b></dt><dd style={{ margin: 0 }}>{t(gl.gloss, lang)} <small>— {t(sourceTitles[passages[gl.key].source], lang)}, {en ? "p." : "ص"} {passages[gl.key].page}</small></dd></div>)}</dl>}
-          {c.flags?.map((f, i) => <div key={i} className="content-safety" data-flag={f.kind}><b>⚑ {flagLabel[f.kind][en ? 1 : 0]}</b><p>{t(f.text, lang)}</p></div>)}
-          {c.kind === "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}>⌕ {en ? "Show the passages" : "اعرض النصوص"}</button>}
+          {c.flags?.map((f, i) => <div key={i} className="content-safety" data-flag={f.kind}><b><Icon name="flag" size={15}/> {flagLabel[f.kind][en ? 1 : 0]}</b><p>{t(f.text, lang)}</p></div>)}
+          {c.kind === "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}><Icon name="sources" size={17}/> {en ? "Show the passages" : "اعرض النصوص"}</button>}
           {c.kind === "glossary" && evidence && <div className="evidence-panel">{c.glossary!.map((gl, i) => <CitationItem key={i} c={{ key: gl.key, grading: "grading_unverified" }} lang={lang} passages={passages} />)}</div>}
-          {c.citations.length > 0 && c.kind !== "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}>⌕ {en ? `How do we know this? (${c.citations.length} source${c.citations.length > 1 ? "s" : ""})` : `كيف نعرف ذلك؟ (${c.citations.length})`}</button>}
+          {c.citations.length > 0 && c.kind !== "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}><Icon name="sources" size={17}/> {en ? `How do we know this? (${c.citations.length} source${c.citations.length > 1 ? "s" : ""})` : `كيف نعرف ذلك؟ (${c.citations.length})`}</button>}
           {evidence && <div className="evidence-panel">{c.citations.map((ci, i) => <CitationItem key={i} c={ci} lang={lang} passages={passages} />)}<small>{en ? "Arabic passages are quoted verbatim from the edition cited. English text on the card is a draft rendering, not a reviewed translation." : "النصوص العربية منقولة بحروفها من الطبعة المذكورة."}</small></div>}
         </article>
         <div className="lesson-controls sl-controls">
