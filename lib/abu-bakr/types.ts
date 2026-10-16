@@ -39,11 +39,13 @@ export type Flag = { kind: "weak" | "conflict" | "no_chain" | "gap"; text: BiTex
 
 export type Card = {
   id: string;
-  kind: "hook" | "facts" | "context" | "map" | "reflection" | "summary";
+  kind: "hook" | "facts" | "context" | "map" | "reflection" | "summary" | "narrative" | "glossary" | "lesson";
   title: BiText;
   body: BiText;
   citations: Citation[];
   flags?: Flag[];
+  /** glossary entries: every gloss is taken from what the cited passage itself says */
+  glossary?: { term: BiText; gloss: BiText; key: string }[];
 };
 
 export type ScratchLesson = {
@@ -52,7 +54,12 @@ export type ScratchLesson = {
   status: "internal_unapproved";
   title: BiText;
   cards: Card[];
+  quiz?: QuizQ[];
 };
+
+export type QuizQ = { id: string; q: BiText; options: BiText[]; answer: number; explain: BiText; cardId: string };
+
+export type LessonExtension = { after?: Record<string, Card[]>; append?: Card[]; quiz: QuizQ[] };
 
 export const sourceTitles: Record<Passage["source"], BiText> = {
   bukhari: { ar: "صحيح البخاري", en: "Sahih al-Bukhari" },

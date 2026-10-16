@@ -118,6 +118,7 @@ export const lesson08: ScratchLesson = {
       ],
       flags: [
         { kind: "conflict", text: { ar: "ذكر ابن كثير أن مبايعة عليّ بعد وفاة فاطمة (بعد ستة أشهر) «محمولة على أنها بيعة ثانية» أزالت وحشة سببها مسألة الميراث. هذا جمعٌ من ابن كثير بين الروايات، ويحتاج إلى مراجعة علمية.", en: "Ibn Kathir explains ʿAli's pledge after Fatimah's death (six months later) as 'a second pledge' that removed estrangement over the inheritance question. This is Ibn Kathir's reconciliation of the reports and needs scholarly review." } },
+        { kind: "gap", text: { ar: "حاشية في ص٧ من البداية تنقل تصحيح الحاكم «على شرط الشيخين» لخبر لا يتبيّن من المقطع أيّ خبر هو؛ لا يُبنى عليها حكم.", en: "A footnote on Bidayah p. 7 quotes al-Hakim grading a report sahih by the criteria of the two shaykhs; which report it refers to is not identifiable from the extract, so no grading is drawn from it." } },
         { kind: "gap", text: { ar: "رقم حديث محمد بن الحنفية مطبوع في المقطع «٤٦٧١» في ص٩٠٢؛ يحتاج إلى مطابقة مع الطبعة.", en: "The hadith number for Muhammad ibn al-Hanafiyyah's report is transcribed as '4671' on p. 902; needs checking against the edition." } },
       ],
     },
