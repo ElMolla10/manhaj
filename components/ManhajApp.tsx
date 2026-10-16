@@ -12,11 +12,11 @@ import { ComingSoon, HomeView, LearnView, PathView, SearchView, SubjectView, Uti
 
 export default function ManhajApp({ route = [] }: { route?: string[] }) {
   const [lang,setLang]=useState<Lang>("ar");
-  const [theme,setTheme]=useState<"light"|"dark"|"system">("light");
-  useEffect(()=>{const l=localStorage.getItem("manhaj:lang");const th=localStorage.getItem("manhaj:theme");queueMicrotask(()=>{if(l==="ar"||l==="en")setLang(l);if(th==="light"||th==="dark"||th==="system")setTheme(th);});},[]);
+  const [theme,setTheme]=useState<"light"|"dark"|"system">("dark");
+  const [themeLoaded,setThemeLoaded]=useState(false);
+  useEffect(()=>{const l=localStorage.getItem("manhaj:lang");const th=localStorage.getItem("manhaj:theme");queueMicrotask(()=>{if(l==="ar"||l==="en")setLang(l);if(th==="light"||th==="dark"||th==="system")setTheme(th);setThemeLoaded(true);});},[]);
   useEffect(()=>{document.documentElement.lang=lang;document.documentElement.dir=lang==="ar"?"rtl":"ltr";localStorage.setItem("manhaj:lang",lang);},[lang]);
-  useEffect(()=>{localStorage.setItem("manhaj:theme",theme);},[theme]);
-  const dark=theme==="dark"||(theme==="system"&&typeof window!=="undefined"&&window.matchMedia("(prefers-color-scheme: dark)").matches);
+  useEffect(()=>{if(!themeLoaded)return;localStorage.setItem("manhaj:theme",theme);const isDark=theme==="dark"||(theme==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",isDark);document.documentElement.style.colorScheme=isDark?"dark":"light";},[theme,themeLoaded]);
   const first=route[0]??"home";
   const isLesson=route.length>=3;
   let view:React.ReactNode;
@@ -35,7 +35,7 @@ export default function ManhajApp({ route = [] }: { route?: string[] }) {
 
   const changeTheme=()=>setTheme(v=>v==="light"?"dark":v==="dark"?"system":"light");
   const en=lang==="en";
-  return <div className={dark?"site-shell dark-mode":"site-shell"}>
+  return <div className="site-shell">
     <header className="topbar"><nav className="nav" aria-label={en?"Main navigation":"التنقل الرئيسي"}>
       <a className="brand" href="/"><span className="brand-mark">م</span><span>{en?"Manhaj":"منهج"}</span></a>
       <div className="nav-links"><a className={first==="learn"?"active":""} href="/learn">{en?"Learn":"تعلّم"}</a><a className={first==="seerah"?"active":""} href="/seerah">{en?"Seerah":"السيرة"}</a><a className={first==="sahabah"?"active":""} href="/sahabah">{en?"Sahabah":"الصحابة"}</a><div className="more-menu"><button>{en?"More":"المزيد"}<Icon name="chevronDown" size={16}/></button><div><a href="/library">{en?"Sources":"المصادر"}</a></div></div></div>
