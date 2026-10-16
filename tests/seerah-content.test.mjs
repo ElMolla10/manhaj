@@ -14,6 +14,10 @@ function check(key, grading, excerpt, f) {
   if (grading?.startsWith("editor_")) assert.ok(p.gradingNote, `${key} labelled ${grading} but no grader note`);
   if (grading?.startsWith("umari_")) assert.equal(p.source, "umari", `${key} labelled ${grading} but not from al-Umari`);
   if (grading === "in_sahih_bukhari") assert.equal(p.source, "bukhari", `${key} labelled bukhari`);
+  if (grading === "source_cites_muslim") assert.match(p.quote, /مسلم/, `${key} labelled source_cites_muslim but the passage does not name Muslim`);
+  if (grading === "umari_hasan_li_ghayrihi") assert.match(p.quote, /الحسن لغيره/, `${key}: no hasan li-ghayrihi wording`);
+  if (grading === "umari_weak") assert.match(p.quote, /ضعيف/, `${key}: no weak wording`);
+  if (grading === "umari_not_established" || grading === "source_says_no_sound_chain") assert.match(p.quote, /لم يثبت|ليس له إسناد ثابت/, `${key}: no not-established wording`);
   if (grading === "source_cites_bukhari") assert.match(p.quote, /البخاري/, `${key} labelled source_cites_bukhari but the passage does not name al-Bukhari`);
 }
 

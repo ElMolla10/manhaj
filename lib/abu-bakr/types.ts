@@ -21,6 +21,11 @@ export type Grading =
   | "umari_cites_bukhari"    // al-Umari attributes the same report to Sahih al-Bukhari
   | "umari_cites_muslim"     // al-Umari attributes a report of the same event to Sahih Muslim
   | "mahdi_hasan_chain"      // Mahdi Rizq Allah calls this same (Ibn Ishaq) chain hasan
+  | "umari_hasan_li_ghayrihi" // al-Umari: the chains strengthen each other to hasan li-ghayrihi
+  | "umari_weak"             // al-Umari states the chain is weak
+  | "umari_not_established"  // al-Umari states the reports are not established (لم يثبت)
+  | "source_cites_muslim"    // the source's author attributes it to Sahih Muslim (stated in the text)
+  | "source_says_no_sound_chain" // the source's author states it has no established chain
   | "grading_unverified";     // no grading located
 
 export const gradingLabel: Record<Grading, BiText> = {
@@ -43,6 +48,11 @@ export const gradingLabel: Record<Grading, BiText> = {
   umari_cites_bukhari: { ar: "عزاه العمري إلى صحيح البخاري", en: "al-ʿUmari attributes it to Sahih al-Bukhari" },
   umari_cites_muslim: { ar: "عزا العمري رواية الحادثة إلى صحيح مسلم", en: "al-ʿUmari attributes a report of this event to Sahih Muslim" },
   mahdi_hasan_chain: { ar: "حسّن مهدي رزق الله إسناد ابن إسحاق", en: "Mahdi Rizq Allah grades Ibn Ishaq's chain hasan" },
+  umari_hasan_li_ghayrihi: { ar: "حسن لغيره عند العمري", en: "Hasan li-ghayrihi (strengthened by other chains) per al-ʿUmari" },
+  umari_weak: { ar: "ضعّف العمري إسناده", en: "al-ʿUmari grades its chain weak" },
+  umari_not_established: { ar: "قال العمري: لم يثبت", en: "al-ʿUmari: not established" },
+  source_cites_muslim: { ar: "عزاه المصنف إلى صحيح مسلم", en: "The author attributes it to Sahih Muslim" },
+  source_says_no_sound_chain: { ar: "قال المصنف: ليس له إسناد ثابت", en: "The author says it has no established chain" },
   grading_unverified: { ar: "لم يُتحقق من الدرجة", en: "Grading unverified" },
 };
 

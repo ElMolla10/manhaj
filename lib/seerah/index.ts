@@ -1,9 +1,10 @@
 import passagesJson from "./passages.json";
 import type { Passage, ScratchLesson } from "@/lib/abu-bakr/types";
 import { s01, s02, s03 } from "./lessons-01-03";
+import { s04, s05, s06 } from "./lessons-04-06";
 
 export const seerahPassages = passagesJson as unknown as Record<string, Passage>;
-export const seerahLessons: ScratchLesson[] = [s01, s02, s03];
+export const seerahLessons: ScratchLesson[] = [s01, s02, s03, s04, s05, s06];
 export const seerahBySlug: Record<string, ScratchLesson> = Object.fromEntries(seerahLessons.map(l => [l.slug, l]));
 for (const l of seerahLessons) {
   if (l.status !== "internal_unapproved") throw new Error(`Unexpected status for ${l.slug}`);
