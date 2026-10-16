@@ -16,6 +16,7 @@ export type Grading =
   | "author_sahih_chain"      // the book's own author (not an editor) calls the chain sahih
   | "author_munkar"          // the book's own author (not an editor) calls the report munkar, in the text
   | "author_matruk"          // the book's own author (not an editor) calls a narrator matruk (abandoned), in the text
+  | "umari_says_sahih"       // al-Umari states in his text that the report is authentic ("صح")
   | "umari_hasan_chain"      // Akram al-Umari (al-Sirah al-Sahihah) calls this same chain hasan
   | "umari_cites_bukhari"    // al-Umari attributes the same report to Sahih al-Bukhari
   | "umari_cites_muslim"     // al-Umari attributes a report of the same event to Sahih Muslim
@@ -32,6 +33,7 @@ export const gradingLabel: Record<Grading, BiText> = {
   source_cites_sahihayn: { ar: "عزاه المصنف إلى الصحيحين", en: "The author attributes it to al-Bukhari and Muslim" },
   source_cites_bukhari: { ar: "عزاه المصنف إلى صحيح البخاري", en: "The author attributes it to Sahih al-Bukhari" },
   editor_cites_sahihayn: { ar: "عزاه محقق الطبعة إلى البخاري ومسلم", en: "The edition's editor attributes it to al-Bukhari and Muslim" },
+  umari_says_sahih: { ar: "صحّحه العمري في السيرة الصحيحة", en: "Stated authentic by al-ʿUmari (al-Sirah al-Sahihah)" },
   editor_cites_muslim: { ar: "عزاه محقق الطبعة إلى مسلم", en: "The edition's editor attributes it to Sahih Muslim" },
   editor_cites_bukhari: { ar: "عزاه محقق الطبعة إلى البخاري", en: "The edition's editor attributes it to al-Bukhari" },
   author_sahih_chain: { ar: "صحّح المصنف إسناده", en: "The book's author calls its chain sahih" },

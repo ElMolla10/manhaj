@@ -49,6 +49,19 @@ export const v7: Record<number, V6> = {
   },
   4: {
     after: {
+      arrival: [
+        card("grey-hair", "facts", "الوحيد الأشمط بين أصحابه", "The only one with greying hair among his companions",
+          "عن أنس بن مالك «أن النبي ﷺ قدم، يعني المدينة، وليس في أصحابه أشمط غير أبي بكر، فغلفها بالحناء والكتم». قال الذهبي: «أخرجه البخاري».",
+          "From Anas ibn Malik: 'The Prophet ﷺ arrived — meaning in Madinah — and there was no one among his companions with greying hair except Abu Bakr, and he dyed it with henna and katam.' Al-Dhahabi: 'Al-Bukhari narrated it.'",
+          [ci("siyar_s_p276", "source_cites_bukhari", "غير أبي بكر، فغلفها بالحناء والكتم")],
+          undefined,
+          [g("أشمط", "ashmat", "من خالط شعره البياض", "one whose hair is mixed with white", "siyar_s_p276")]),
+        card("buraydah", "context", "قصة بريدة والتفاؤل — إسناد متروك", "Buraydah and the good omen — an abandoned narrator",
+          "أورد الذهبي من طريق أوس بن عبدالله بن بريدة أن بريدة لقي النبي ﷺ في الهجرة، فلما سأله عن اسمه وقبيلته «التفت إلى أبي بكر فقال: برد أمرنا وصلح»، ثم «قال لأبي بكر: سلمنا». ثم قال الذهبي: «قلت: أوس متروك».",
+          "Al-Dhahabi cites, via Aws ibn ʿAbdullah ibn Buraydah, that Buraydah met the Prophet ﷺ during the Hijrah; on hearing his name and tribe 'he turned to Abu Bakr and said: Our affair has cooled and come right,' then 'said to Abu Bakr: We are safe.' Al-Dhahabi then says: 'I say: Aws is abandoned (matruk).'",
+          [ci("siyar_s_p275", "author_matruk", "قلت: أوس متروك")],
+          [fl("weak", "حكم الذهبي على راويه أوس بأنه متروك؛ لا يُحتج به.", "Al-Dhahabi judges its narrator Aws abandoned; it is not used as evidence.")]),
+      ],
       two: [
         card("two-isabah", "context", "منقبة لم يشركه فيها غيره", "A virtue no one else shared",
           "قال ابن حجر في «الإصابة» عن آية الغار: «فإن المراد بصاحبه أبو بكر بلا نزاع»، وذكر أن حديث أنس «ما ظنك باثنين الله ثالثهما؟» «ثبت في الصحيحين»، ثم قال: «والأحاديث في كونه كان معه في الغار كثيرة شهيرة، ولم يشركه في هذه المنقبة غيره».",
@@ -78,6 +91,36 @@ export const v7: Record<number, V6> = {
     quiz: [
       q("v7q4", "badr-captives", "بماذا أشار أبو بكر في أسرى بدر؟", "What did Abu Bakr advise about the captives of Badr?",
         [["أخذ الفدية وإطلاقهم", "Take a ransom and free them"], ["قتلهم", "Kill them"], ["حبسهم في المدينة", "Imprison them in Madinah"]], 0, "وأشار عمر بقتلهم.", "ʿUmar advised killing them."),
+    ],
+  },
+  7: {
+    after: {
+      "day-narrative": [
+        card("burial-place", "context", "«حيث قُبض»: موضع دفنه ﷺ", "'Where he was taken': the place of his burial",
+          "قال ابن كثير في «الفصول»: دُفن ﷺ «في الموضع الذي توفي فيه من حجرة عائشة، لحديث رواه الترمذي عن أبي بكر». وقال محقق الطبعة: «حسن بطرقه»، وذكر أن طريق الترمذي «سنده ضعيف لضعف عبد الرحمن بن أبي بكر»، «وروي موقوفاً بسند صحيح إلى أبي بكر»، وفيه: «فقالوا لأبي بكر: أين يدفن فقال: حيث قبض فإن الله لم يقبضه إلا في أرض طيبة».",
+          "Ibn Kathir says in al-Fusul that he ﷺ was buried 'in the place where he died, in ʿAʾishah's room, because of a hadith al-Tirmidhi narrated from Abu Bakr.' The editor: 'hasan through its routes'; he notes that al-Tirmidhi's route 'has a weak chain because of ʿAbd al-Rahman ibn Abi Bakr,' and that 'it is reported as Abu Bakr's own words with a sahih chain,' in which: 'They said to Abu Bakr: Where is he to be buried? He said: Where he was taken, for Allah took him only in a good land.'",
+          [ci("fusul_p133_134", "editor_hasan", "حيث قبض فإن الله لم يقبضه إلا في أرض طيبة")],
+          [fl("weak", "طريق الترمذي ضعيف عند المحقق، وحسّن الحديث بمجموع طرقه.", "The editor calls al-Tirmidhi's route weak and grades the hadith hasan only through its combined routes.")]),
+      ],
+    },
+    quiz: [
+      q("v7q7", "burial-place", "بماذا أجاب أبو بكر حين سُئل: أين يُدفن النبي ﷺ؟", "What did Abu Bakr answer when asked where the Prophet ﷺ should be buried?",
+        [["حيث قُبض", "Where he was taken (died)"], ["في البقيع", "In al-Baqiʿ"], ["في مكة", "In Makkah"]], 0, "«فإن الله لم يقبضه إلا في أرض طيبة».", "'Allah took him only in a good land.'"),
+    ],
+  },
+  8: {
+    after: {
+      speech: [
+        card("rafi", "narrative", "«لا تأمّر على رجلين»… ثم وليَ الأمر", "'Never take command over two men'… then he took office",
+          "روى ابن إسحاق - «فيما بلغني» - عن رافع بن أبي رافع الطائي أنه صحب أبا بكر في غزوة ذات السلاسل، «وكانت عليه عباءة له فدكية، فكان إذا نزلنا بسطها، وإذا ركبنا لبسها»، فطلب منه النصيحة فأوصاه بالتوحيد وأركان الإسلام وقال: «ولا تأمر على رجلين من المسلمين أبداً». فلما وليَ أبو بكر الخلافة قدم عليه رافع فذكّره، فقال: «بلى، وأنا الآن أنهاك عن ذلك»، فسأله: فما حملك على أن تلي أمر الناس؟ قال: «لا أجد من ذلك بداً، خشيت على أمة محمد ﷺ الفرقة».",
+          "Ibn Ishaq relates — 'as reached me' — from Rafiʿ ibn Abi Rafiʿ al-Taʾi that he accompanied Abu Bakr on the expedition of Dhat al-Salasil: 'He had a cloak from Fadak; when we halted he spread it out, and when we rode he wore it.' Rafiʿ asked his counsel; Abu Bakr advised him on tawhid and the pillars and said: 'Never take command over two Muslims.' When Abu Bakr became caliph, Rafiʿ came and reminded him. He said: 'Yes, and I forbid you that now.' Rafiʿ asked: 'Then what made you take charge of the people?' He said: 'I found no way out of it; I feared division for the community of Muhammad ﷺ.'",
+          [ci("ibn_hisham_p651_652", "no_chain_stated", "ولا تأمر على رجلين من المسلمين أبداً"), ci("ibn_hisham_p651_652", "no_chain_stated", "لا أجد من ذلك بداً، خشيت على أمة محمد ﷺ الفرقة")],
+          [fl("no_chain", "يقول ابن إسحاق: «فيما بلغني»، فلا إسناد مذكور.", "Ibn Ishaq says 'as reached me', so no chain is given.")]),
+      ],
+    },
+    quiz: [
+      q("v7q8", "rafi", "لماذا قبل أبو بكر الخلافة مع أنه نهى رافعًا عن الإمارة؟", "Why did Abu Bakr accept the caliphate though he had told Rafiʿ to avoid command?",
+        [["خشي على الأمة الفرقة", "He feared division for the community"], ["رغب في المال", "He wanted wealth"], ["أوصى بها النبي ﷺ صراحة", "The Prophet ﷺ explicitly appointed him"]], 0, "«لا أجد من ذلك بداً».", "'I found no way out of it.'"),
     ],
   },
   9: {
