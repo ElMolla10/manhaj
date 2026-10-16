@@ -3,7 +3,10 @@
 
 import { useState } from "react";
 import { Lang, t } from "@/lib/content";
-import { passages, scratchLessons } from "@/lib/abu-bakr";
+import { passages as abuBakrPassages, scratchLessons as abuBakrLessons } from "@/lib/abu-bakr";
+import type { Passage } from "@/lib/abu-bakr/types";
+
+type Ctx = { passages: Record<string, Passage> };
 import { gradingLabel, sourceTitles, type Citation, type QuizQ, type ScratchLesson } from "@/lib/abu-bakr/types";
 
 const kindLabel: Record<string, [string, string]> = { hook: ["مدخل", "Introduction"], facts: ["حقائق", "Facts"], context: ["شرح", "Explanation"], map: ["خريطة", "Map"], reflection: ["للمراجعة", "For review"], summary: ["خلاصة", "Summary"], narrative: ["القصة", "Narrative"], glossary: ["مسرد", "Glossary"], lesson: ["تأمل — ليس رواية", "Reflection — not a source claim"] };
@@ -17,7 +20,7 @@ export function DraftBanner({ lang }: { lang: Lang }) {
   </div>;
 }
 
-function CitationItem({ c, lang }: { c: Citation; lang: Lang }) {
+function CitationItem({ c, lang, passages }: { c: Citation; lang: Lang } & Ctx) {
   const p = passages[c.key];
   const en = lang === "en";
   return <div className="source-item" style={{ display: "block" }}>
@@ -28,14 +31,14 @@ function CitationItem({ c, lang }: { c: Citation; lang: Lang }) {
   </div>;
 }
 
-export default function ScratchLessonView({ lesson, lang, base }: { lesson: ScratchLesson; lang: Lang; base: string }) {
+export default function ScratchLessonView({ lesson, lang, base, passages = abuBakrPassages, lessons = abuBakrLessons, subject = { ar: "أبو بكر الصديق رضي الله عنه", en: "Abu Bakr al-Siddiq" } }: { lesson: ScratchLesson; lang: Lang; base: string; passages?: Record<string, Passage>; lessons?: ScratchLesson[]; subject?: { ar: string; en: string } }) {
   const en = lang === "en";
   const [card, setCard] = useState(0);
   const [evidence, setEvidence] = useState(false);
   const c = lesson.cards[card];
   const go = (n: number) => { setCard(Math.max(0, Math.min(n, lesson.cards.length - 1))); setEvidence(false); };
-  const idx = scratchLessons.findIndex(l => l.slug === lesson.slug);
-  const next = scratchLessons[idx + 1];
+  const idx = lessons.findIndex(l => l.slug === lesson.slug);
+  const next = lessons[idx + 1];
   const [quiz, setQuiz] = useState(false);
   const progress = Math.round(((card + 1) / lesson.cards.length) * 100);
   return <main className="lesson-page">
@@ -43,7 +46,7 @@ export default function ScratchLessonView({ lesson, lang, base }: { lesson: Scra
     <div className="lesson-progress"><span style={{ width: `${progress}%` }} /></div>
     <DraftBanner lang={lang} />
     <div className="lesson-grid">
-      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? "Abu Bakr al-Siddiq" : "أبو بكر الصديق رضي الله عنه"}</p><div className="review-state"><span>◌</span><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small>internal_unapproved — {en ? "pending scholarly review" : "بانتظار المراجعة العلمية"}</small></div></div></aside>
+      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><span>◌</span><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small>internal_unapproved — {en ? "pending scholarly review" : "بانتظار المراجعة العلمية"}</small></div></div></aside>
       <section className="lesson-stage">
         {quiz && lesson.quiz ? <Quiz qs={lesson.quiz} lang={lang} onClose={() => setQuiz(false)} onReview={id => { setQuiz(false); go(lesson.cards.findIndex(x => x.id === id)); }} /> : <>
         <article className={`learning-card ${c.kind}`}>
@@ -53,9 +56,9 @@ export default function ScratchLessonView({ lesson, lang, base }: { lesson: Scra
           {c.glossary && <dl className="glossary">{c.glossary.map((gl, i) => <div key={i} style={{ margin: "10px 0" }}><dt><b>{t(gl.term, lang)}</b></dt><dd style={{ margin: 0 }}>{t(gl.gloss, lang)} <small>— {t(sourceTitles[passages[gl.key].source], lang)}, {en ? "p." : "ص"} {passages[gl.key].page}</small></dd></div>)}</dl>}
           {c.flags?.map((f, i) => <div key={i} className="content-safety" data-flag={f.kind}><b>⚑ {flagLabel[f.kind][en ? 1 : 0]}</b><p>{t(f.text, lang)}</p></div>)}
           {c.kind === "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}>⌕ {en ? "Show the passages" : "اعرض النصوص"}</button>}
-          {c.kind === "glossary" && evidence && <div className="evidence-panel">{c.glossary!.map((gl, i) => <CitationItem key={i} c={{ key: gl.key, grading: "grading_unverified" }} lang={lang} />)}</div>}
+          {c.kind === "glossary" && evidence && <div className="evidence-panel">{c.glossary!.map((gl, i) => <CitationItem key={i} c={{ key: gl.key, grading: "grading_unverified" }} lang={lang} passages={passages} />)}</div>}
           {c.citations.length > 0 && c.kind !== "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}>⌕ {en ? `How do we know this? (${c.citations.length} source${c.citations.length > 1 ? "s" : ""})` : `كيف نعرف ذلك؟ (${c.citations.length})`}</button>}
-          {evidence && <div className="evidence-panel">{c.citations.map((ci, i) => <CitationItem key={i} c={ci} lang={lang} />)}<small>{en ? "Arabic passages are quoted verbatim from the edition cited. English text on the card is a draft rendering, not a reviewed translation." : "النصوص العربية منقولة بحروفها من الطبعة المذكورة."}</small></div>}
+          {evidence && <div className="evidence-panel">{c.citations.map((ci, i) => <CitationItem key={i} c={ci} lang={lang} passages={passages} />)}<small>{en ? "Arabic passages are quoted verbatim from the edition cited. English text on the card is a draft rendering, not a reviewed translation." : "النصوص العربية منقولة بحروفها من الطبعة المذكورة."}</small></div>}
         </article>
         <div className="lesson-controls sl-controls">
           <button className="sl-btn sl-prev" onClick={() => go(card - 1)} disabled={card === 0}><span aria-hidden="true">{en ? "←" : "→"}</span>{en ? "Previous" : "السابق"}</button>

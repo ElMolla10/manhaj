@@ -6,6 +6,7 @@ import { Lang, paths } from "@/lib/content";
 import LessonExperience from "@/components/LessonExperience";
 import ScratchLessonView from "@/components/ScratchLessonView";
 import { scratchBySlug } from "@/lib/abu-bakr";
+import { seerahBySlug, seerahLessons, seerahPassages } from "@/lib/seerah";
 import { ComingSoon, HomeView, LearnView, PathView, SearchView, SubjectView, UtilityView } from "@/components/Views";
 
 export default function ManhajApp({ route = [] }: { route?: string[] }) {
@@ -23,6 +24,7 @@ export default function ManhajApp({ route = [] }: { route?: string[] }) {
   else if(isLesson&&first==="sahabah"&&scratchBySlug[route[2]]) view=<ScratchLessonView lesson={scratchBySlug[route[2]]} lang={lang} base={paths.abuBakr.href}/>;
   else if(isLesson&&first==="sahabah") view=<LessonExperience path={paths.abuBakr} lang={lang}/>;
   else if(route.length===2&&first==="sahabah") view=<PathView path={paths.abuBakr} lang={lang}/>;
+  else if(isLesson&&first==="seerah"&&seerahBySlug[route[2]]) view=<ScratchLessonView lesson={seerahBySlug[route[2]]} lang={lang} base={paths.seerah.href} passages={seerahPassages} lessons={seerahLessons} subject={{ar:"السيرة النبوية",en:"The Prophetic Biography"}}/>;
   else if(isLesson&&first==="seerah") view=<ComingSoon id="seerah" lang={lang}/>;
   else if(route.length===2&&first==="seerah") view=<PathView path={paths.seerah} lang={lang}/>;
   else if(["seerah","sahabah"].includes(first)) view=<SubjectView id={first} lang={lang}/>;
