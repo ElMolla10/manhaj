@@ -2,7 +2,7 @@
 
 :root {
   --ink: #15231d;
-  --muted: #647168;
+  --muted: #59655d;
   --paper: #f7f3e9;
   --paper-2: #efe9da;
   --surface: #fffdf7;
@@ -41,7 +41,7 @@ button { color: inherit; }
 .hero-copy > p { color: var(--muted); font-size: 18px; line-height: 1.9; max-width: 620px; margin: 0; }
 .hero-actions { display: flex; gap: 12px; margin-top: 28px; }
 .secondary-btn { border: 1px solid var(--line); background: var(--surface); border-radius: 14px; padding: 12px 18px; cursor: pointer; font-weight: 750; }
-.trust-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; color: #6d786f; font-size: 13px; }
+.trust-row { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 30px; color: var(--muted); font-size: 13px; }
 .trust-row span::before { content:"✓"; color: var(--green-2); margin-inline-end: 7px; font-weight: 900; }
 .resume-card { border-radius: 28px; padding: 30px; color: #eff5ef; overflow: hidden; position: relative; background: linear-gradient(150deg, #173f32 0%, #214c3e 58%, #2b5b49 100%); box-shadow: 0 22px 60px rgba(23,63,50,.2); min-height: 410px; }
 .resume-card::after { content:""; position:absolute; width:260px; height:260px; border:1px solid rgba(255,255,255,.1); border-radius:50%; left:-105px; top:-105px; box-shadow: 0 0 0 40px rgba(255,255,255,.025), 0 0 0 80px rgba(255,255,255,.018); }
@@ -76,8 +76,8 @@ button { color: inherit; }
 .proof-card strong { display:block; margin-bottom:8px; }
 .proof-card p { color:var(--muted); font-size:13px; line-height:1.75; margin:0; }
 .bottom-nav { display:none; }
-.dark-mode { --ink:#edf0e8; --muted:#aeb9b0; --paper:#142019; --paper-2:#1a2921; --surface:#1c2b23; --line:#34443a; --sage:#294237; --green:#88b69f; --green-2:#9fc8b4; --gold:#d3af6e; }
-.dark-mode .resume-card { background:linear-gradient(150deg,#1e4c3b,#2c604c); }
+html.dark { --ink:#edf0e8; --muted:#aeb9b0; --paper:#142019; --paper-2:#1a2921; --surface:#1c2b23; --line:#34443a; --sage:#294237; --green:#88b69f; --green-2:#9fc8b4; --gold:#d3af6e; }
+html.dark .resume-card { background:linear-gradient(150deg,#1e4c3b,#2c604c); }
 
 @media (max-width: 900px) {
   .nav-links, .continue-btn { display:none; }
@@ -89,7 +89,7 @@ button { color: inherit; }
   .path-panel { grid-template-columns:1fr; }
   .proof-grid { grid-template-columns:1fr; }
   .bottom-nav { position:fixed; z-index:40; bottom:0; left:0; right:0; display:grid; grid-template-columns:repeat(5,1fr); background:rgba(255,253,247,.96); border-top:1px solid var(--line); padding:9px 6px max(9px, env(safe-area-inset-bottom)); backdrop-filter:blur(16px); }
-  .dark-mode .bottom-nav { background:rgba(28,43,35,.96); }
+  html.dark .bottom-nav { background:rgba(28,43,35,.96); }
   .bottom-nav a { display:flex; flex-direction:column; align-items:center; gap:3px; font-size:10px; color:var(--muted); }
   .bottom-nav b { font-size:18px; color:var(--green); line-height:1; }
 }
@@ -279,7 +279,7 @@ button { color: inherit; }
 .evidence-panel .source-item h3 { margin:10px 0 8px; font-size:16px; line-height:1.6; }
 .evidence-panel blockquote { margin:0; padding-inline-start:14px; border-inline-start:3px solid color-mix(in srgb,var(--gold) 45%,transparent); max-width:68ch; }
 .evidence-panel .source-item>small { display:block; margin-top:12px; padding:10px 12px; border-radius:10px; background:#f1e3c4; color:#5a3a08; font-size:14px; line-height:1.8; }
-.dark-mode .evidence-panel .source-item>small { background:#3a2f1c; color:#f1dcae; }
+html.dark .evidence-panel .source-item>small { background:#3a2f1c; color:#f1dcae; }
 .quiz-start { margin-top:24px; }
 .lesson-controls { display:grid; grid-template-columns:1fr auto 1fr; gap:15px; align-items:center; margin-top:16px; }
 .lesson-controls button { border:1px solid var(--line); background:var(--surface); border-radius:13px; padding:12px 18px; cursor:pointer; font-weight:750; justify-self:start; }
@@ -420,7 +420,7 @@ button { color: inherit; }
 .sl-counter i { display:block; color:var(--muted); font-size:11px; font-style:normal; }
 @media (max-width: 760px) { .sl-btn { min-width:0; padding:11px 14px; } .lesson-controls .sl-main { min-width:0; padding:12px 16px; } }
 .evidence-panel mark { background:#f5e2a0; color:inherit; padding:0 2px; border-radius:3px; }
-.dark-mode .evidence-panel mark { background:#5b4a1f; }
+html.dark .evidence-panel mark { background:#5b4a1f; }
 
 /* Lesson card sizing, meta legibility, tap targets */
 .learning-card { min-height:clamp(320px,52vh,520px); display:flex; flex-direction:column; }
@@ -471,8 +471,8 @@ html[lang="en"] .hero h1 { letter-spacing:-.03em; line-height:1.08; }
 .subject-hero-mark { overflow:hidden; padding:0; background:var(--green); color:#d6bb7b; }
 .subject-hero-mark .pattern-art, .coming>span .pattern-art { width:100%; height:100%; display:block; }
 .coming>span { overflow:hidden; color:var(--green-2); }
-.dark-mode .subject-art { background:#24382e; color:#9cc3ad; }
-.dark-mode .subject-art.sahabah { background:#3a2f1c; color:#d6bb7b; }
+html.dark .subject-art { background:#24382e; color:#9cc3ad; }
+html.dark .subject-art.sahabah { background:#3a2f1c; color:#d6bb7b; }
 @media (max-width:560px) { .subject-art { width:calc(100% + 32px); margin:-16px -16px 14px; height:80px; } }
 
 /* Polish: balanced headings, resume card, explore grid */
@@ -490,3 +490,35 @@ p,li,small { text-wrap:pretty; }
 #subjects .subject-art { height:120px; }
 @media (max-width:560px) { #subjects .subjects { grid-template-columns:repeat(2,1fr); } #subjects .subject-art { height:80px; } .resume-facts b { font-size:19px; } }
 .hero>.resume-card { align-self:center; }
+
+/* Dark theme: AA contrast audit */
+html.dark { color-scheme:dark; background:var(--paper); }
+html.dark body { color:var(--ink); background:var(--paper); }
+html.dark .site-shell { color:var(--ink); }
+html.dark .nav-links, html.dark .trust-row { color:var(--muted); }
+html.dark .nav-links a.active, html.dark .nav-links a:hover { color:var(--green-2); }
+/* Light-green fills get dark text */
+html.dark :is(.continue-btn,.primary-btn,.lesson-controls .sl-next,.lesson-controls button.next) { color:#0f1f18; }
+html.dark .lesson-controls .sl-next:hover:not(:disabled) { color:#0f1f18; }
+html.dark .brand-mark { color:#0f1f18; }
+html.dark .lesson-nav>button.done>span { color:#0f1f18; }
+/* Cream button inside the dark resume card keeps dark text */
+html.dark .resume-action { background:#fff4dc; color:#173f32; }
+/* Formerly light panels become dark surfaces */
+html.dark .path-panel { background:var(--surface); border-color:var(--line); }
+html.dark .path-intro { background:var(--paper-2); }
+html.dark .path-step { border-bottom-color:var(--line); }
+html.dark .subject-banner, html.dark .subject-banner.seerah { background:#1d2e26; border-color:var(--line); }
+html.dark .subject-banner.sahabah { background:#2a2419; border-color:#45392a; }
+html.dark :is(.path-hero,.continue-panel,.subject-hero-mark) { background:#1e4c3b; }
+html.dark .path-hero.sahabah { background:#4a3a24; }
+html.dark .path-hero.seerah { background:#24403a; }
+html.dark .subject-card:hover { border-color:#4a5d51; }
+/* Quiz states: dark tints with light text */
+html.dark .quiz-options button.correct, html.dark .feedback.right { background:#1f3d2d; border-color:#4d8b68; color:#d6efdf; }
+html.dark .quiz-options button.wrong, html.dark .feedback.wrong { background:#3d2420; border-color:#b57362; color:#f6d9d1; }
+html.dark .segmented .selected { color:var(--green-2); }
+html.dark .lesson-controls .sl-prev { color:var(--green-2); border-color:var(--green); }
+html.dark .draft-banner { background:#2e2412 !important; color:#f6dfb3 !important; border-color:#c98a2e !important; }
+html.dark .draft-banner div { color:#ecd2a0; }
+.level-index { opacity:1 !important; color:color-mix(in srgb,var(--green-2) 70%,var(--surface)) !important; }
