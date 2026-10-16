@@ -161,12 +161,6 @@ button { color: inherit; }
 .mini-progress { height:5px; border-radius:5px; background:var(--paper-2); margin-top:auto; overflow:hidden; }
 .mini-progress span { display:block; width:10%; height:100%; background:var(--green-2); }
 .path-card footer { display:flex; justify-content:space-between; align-items:center; font-weight:800; margin-top:15px; }
-.planned-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
-.planned-card { border:1px solid var(--line); background:color-mix(in srgb,var(--surface) 72%,transparent); border-radius:15px; padding:14px; display:flex; gap:12px; align-items:center; }
-.planned-card>span { color:var(--gold); font-weight:800; }
-.planned-card b,.planned-card small { display:block; }
-.planned-card small { color:var(--muted); margin-top:4px; }
-.honest-state { margin-top:15px; padding:13px 16px; border-radius:12px; color:var(--muted); background:var(--paper-2); font-size:13px; }
 
 .path-hero { display:flex; justify-content:space-between; gap:30px; align-items:end; background:var(--green); color:#f4f1e6; border-radius:30px; padding:42px; }
 .path-hero.sahabah { background:#654d2f; }
@@ -357,7 +351,6 @@ button { color: inherit; }
 @media (max-width:900px) {
   .level-card { grid-template-columns:70px 1fr; }
   .level-list { grid-column:1/-1; border-inline-start:0; padding-inline-start:0; border-top:1px solid var(--line); padding-top:14px; }
-  .planned-grid { grid-template-columns:repeat(2,1fr); }
   .path-layout { grid-template-columns:1fr; }
   .path-aside { order:-1; }
   .dashboard-grid { grid-template-columns:1fr; }
@@ -380,7 +373,6 @@ button { color: inherit; }
   .subject-banner h1 { font-size:37px; }
   .subject-banner p { font-size:14px; }
   .path-cards { grid-template-columns:1fr; }
-  .planned-grid { grid-template-columns:1fr; }
   .path-hero { padding:28px; align-items:flex-start; }
   .path-hero h1 { font-size:36px; }
   .path-stat { width:90px; height:90px; }
