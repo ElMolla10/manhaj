@@ -67,3 +67,33 @@ test("subject pages show real courses only — no planned-path placeholders", as
   const sahabah = await (await getPage("/sahabah")).text();
   assert.match(sahabah, /أبو بكر|Abu Bakr/);
 });
+
+test("all 51 Seerah lessons are available and late lessons render", async () => {
+  const pathHtml = await (await getPage("/seerah/prophetic-biography")).text();
+  assert.match(pathHtml, /51\/51/);
+  assert.match(pathHtml, /51 من 51|51 of 51/);
+  assert.doesNotMatch(pathHtml, /38 من 51|38 of 51/);
+  // Locked "In development" rows should be gone for Seerah.
+  assert.doesNotMatch(pathHtml, /aria-disabled="true"/);
+  for (const slug of [
+    "mustaliq-ifk",
+    "hudaybiyah",
+    "letters",
+    "khaybar",
+    "mutah",
+    "fath-makkah",
+    "hunayn-taif",
+    "tabuk-wufud",
+    "farewell-hajj",
+    "final-illness",
+    "household",
+    "character",
+    "timeline",
+  ]) {
+    const res = await getPage(`/seerah/prophetic-biography/${slug}`);
+    assert.equal(res.status, 200, slug);
+    const html = await res.text();
+    assert.match(html, /بانتظار المراجعة العلمية|Draft, pending scholarly review/);
+    assert.doesNotMatch(html, /هذا المسار قيد الإعداد|This learning path is being prepared/);
+  }
+});

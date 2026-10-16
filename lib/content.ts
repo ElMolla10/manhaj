@@ -40,7 +40,7 @@ export const subjects = [
 /** Number of Abu Bakr lessons with from-scratch draft content (pending scholarly review). */
 export const AVAILABLE_ABU_BAKR = 17;
 /** Number of Seerah lessons with from-scratch draft content (pending scholarly review). */
-export const AVAILABLE_SEERAH = 38;
+export const AVAILABLE_SEERAH = 51;
 
 const pending = {
   ar: "النص التعليمي لهذه البطاقة ينتظر التوثيق والمراجعة العلمية قبل نشره. يمكنك الآن استكشاف شكل الدرس وطريقة التعلّم دون عرض مادة غير معتمدة.",
@@ -103,14 +103,14 @@ export const paths: Record<string, Path> = {
       ["uhud-2","غزوة أحد (٢)","Uhud (2)"],
       ["after-uhud","بعد أحد","After Uhud"],
       ["ahzab","الأحزاب وبنو قريظة","al-Ahzab and Banu Qurayzah"],
-      ["mustaliq-and-ifk","بنو المصطلق والإفك","Banu al-Mustaliq and the Ifk"],
+      ["mustaliq-ifk","بنو المصطلق والإفك","Banu al-Mustaliq and the Ifk"],
       ["hudaybiyah","الحديبية","al-Hudaybiyah"],
       ["letters","مكاتبة الملوك","Letters to the Kings"],
       ["khaybar","خيبر وعمرة القضاء","Khaybar and ʿUmrat al-Qadaʾ"],
       ["mutah","مؤتة","Muʾtah"],
-      ["conquest","فتح مكة","The Conquest of Makkah"],
-      ["hunayn","حنين والطائف","Hunayn and Taʾif"],
-      ["tabuk","تبوك وعام الوفود","Tabuk and the Year of Delegations"],
+      ["fath-makkah","فتح مكة","The Conquest of Makkah"],
+      ["hunayn-taif","حنين والطائف","Hunayn and Taʾif"],
+      ["tabuk-wufud","تبوك وعام الوفود","Tabuk and the Year of Delegations"],
       ["farewell-hajj","حجة الوداع","The Farewell Hajj"],
       ["final-illness","المرض والوفاة","The Final Illness and Death"],
       ["household","البيت النبوي","The Prophet's Household"],
