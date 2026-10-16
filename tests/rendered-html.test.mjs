@@ -29,11 +29,19 @@ test("renders a nested guided lesson route", async () => {
   assert.doesNotMatch(html, /\/Users\/|\/root\/|\/workspace\//);
 });
 
+test("seerah lesson renders with draft banner", async () => {
+  const response = await getPage("/seerah/prophetic-biography/arabia-before-islam");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /بانتظار المراجعة العلمية/);
+  assert.match(html, /الأرض التي بُعث فيها النبي/);
+});
+
 test("seerah path lists era titles only and no removed subjects", async () => {
   const response = await getPage("/seerah/prophetic-biography");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /العهد المكي/);
+  assert.match(html, /جزيرة العرب قبل الإسلام/);
   const home = await (await getPage("/")).text();
   assert.doesNotMatch(home, /الفاتحة|الوضوء|al-fatihah|\/fiqh\//i);
 });
