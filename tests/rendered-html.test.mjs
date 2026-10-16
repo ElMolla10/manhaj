@@ -70,11 +70,14 @@ test("subject pages show real courses only — no planned-path placeholders", as
 
 test("all 51 Seerah lessons are available and late lessons render", async () => {
   const pathHtml = await (await getPage("/seerah/prophetic-biography")).text();
-  assert.match(pathHtml, /51\/51/);
+  // React may insert <!-- --> between text nodes, so match the pieces.
+  assert.match(pathHtml, /51(?:<!-- -->)?\/(?:<!-- -->)?51/);
   assert.match(pathHtml, /51 من 51|51 of 51/);
   assert.doesNotMatch(pathHtml, /38 من 51|38 of 51/);
-  // Locked "In development" rows should be gone for Seerah.
-  assert.doesNotMatch(pathHtml, /aria-disabled="true"/);
+  assert.doesNotMatch(pathHtml, /class="locked"/);
+  assert.match(pathHtml, /mustaliq-ifk/);
+  assert.match(pathHtml, /fath-makkah/);
+  assert.match(pathHtml, /timeline/);
   for (const slug of [
     "mustaliq-ifk",
     "hudaybiyah",
