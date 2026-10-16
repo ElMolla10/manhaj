@@ -37,3 +37,12 @@ test("seerah path lists era titles only and no removed subjects", async () => {
   const home = await (await getPage("/")).text();
   assert.doesNotMatch(home, /الفاتحة|الوضوء|al-fatihah|\/fiqh\//i);
 });
+
+test("from-scratch Abu Bakr lessons render with the draft banner", async () => {
+  for (const slug of ["who-was-abu-bakr", "lesson-2", "lesson-3"]) {
+    const html = await (await getPage(`/sahabah/abu-bakr/${slug}`)).text();
+    assert.match(html, /بانتظار المراجعة العلمية/);
+    assert.match(html, /Draft, pending scholarly review/);
+    assert.match(html, /internal_unapproved/);
+  }
+});

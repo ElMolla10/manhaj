@@ -37,6 +37,9 @@ export const subjects = [
   { id: "sahabah", mark: "ص", title: { ar: "الصحابة", en: "Sahabah" }, note: { ar: "سير وتراجم", en: "Biographies" } },
 ] as const;
 
+/** Number of Abu Bakr lessons with from-scratch draft content (pending scholarly review). */
+export const AVAILABLE_ABU_BAKR = 3;
+
 const pending = {
   ar: "النص التعليمي لهذه البطاقة ينتظر التوثيق والمراجعة العلمية قبل نشره. يمكنك الآن استكشاف شكل الدرس وطريقة التعلّم دون عرض مادة غير معتمدة.",
   en: "This card’s teaching text is awaiting evidence checks and scholarly review before publication. You can explore the lesson flow without being shown unapproved material.",
@@ -45,7 +48,7 @@ const pending = {
 export const paths: Record<string, Path> = {
   abuBakr: {
     id:"abu-bakr", subject:"sahabah", accent:"sahabah", href:"/sahabah/abu-bakr", title:{ar:"أبو بكر الصديق رضي الله عنه",en:"Abu Bakr al-Siddiq"}, subtitle:{ar:"سيرة منظّمة عبر ١٢ درسًا",en:"A structured biography across 12 lessons"},
-    lessons:["من كان أبو بكر الصديق؟","الأيام الأولى للإسلام","الثبات وقت الابتلاء","صاحب الغار","في المدينة","مرض النبي ﷺ الأخير","يوم وفاة النبي ﷺ","الخليفة الأول","حروب الردة","جمع القرآن","أيامه الأخيرة وإرثه","مراجعة الخط الزمني"].map((ar,i)=>({id:i===0?"who-was-abu-bakr":`lesson-${i+1}`,title:{ar,en:["Who Was Abu Bakr?","The First Days of Islam","Faith Under Persecution","The Companion of the Cave","Abu Bakr in Madinah","The Final Illness of the Prophet ﷺ","The Day the Prophet ﷺ Died","The First Caliph","The Ridda Crisis","Preserving the Qur’an","His Final Days and Legacy","Timeline Review"][i]},status:i===0?"available":"development"})),
+    lessons:["من كان أبو بكر الصديق؟","الأيام الأولى للإسلام","الثبات وقت الابتلاء","صاحب الغار","في المدينة","مرض النبي ﷺ الأخير","يوم وفاة النبي ﷺ","الخليفة الأول","حروب الردة","جمع القرآن","أيامه الأخيرة وإرثه","مراجعة الخط الزمني"].map((ar,i)=>({id:i===0?"who-was-abu-bakr":`lesson-${i+1}`,title:{ar,en:["Who Was Abu Bakr?","The First Days of Islam","Faith Under Persecution","The Companion of the Cave","Abu Bakr in Madinah","The Final Illness of the Prophet ﷺ","The Day the Prophet ﷺ Died","The First Caliph","The Ridda Crisis","Preserving the Qur’an","His Final Days and Legacy","Timeline Review"][i]},status:(i<AVAILABLE_ABU_BAKR?"available":"development") as "available"|"development"})),
     blocks:[
       {id:"identity",kind:"hook",title:{ar:"من كان أبو بكر؟",en:"Who was Abu Bakr?"},body:pending},
       {id:"name",kind:"facts",title:{ar:"الاسم والكنية والألقاب",en:"Name, kunyah and titles"},body:pending},
