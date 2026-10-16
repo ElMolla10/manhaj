@@ -4,6 +4,7 @@
 import { useState } from "react";
 import { Lang, t } from "@/lib/content";
 import Icon from "@/components/Icon";
+import { num } from "@/lib/num";
 import { passages as abuBakrPassages, scratchLessons as abuBakrLessons } from "@/lib/abu-bakr";
 import type { Passage } from "@/lib/abu-bakr/types";
 
@@ -49,33 +50,33 @@ export default function ScratchLessonView({ lesson, lang, base, passages = abuBa
     <div className="lesson-progress"><span style={{ width: `${progress}%` }} /></div>
     <DraftBanner lang={lang} />
     <div className="lesson-grid">
-      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${lesson.number}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><Icon name="clock" size={18}/><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small data-status={lesson.status}>{t(statusLabel[lesson.status] ?? { ar: "قيد المراجعة", en: "Under review" }, lang)}</small></div></div></aside>
+      <aside className="lesson-context"><span className="eyebrow">{en ? `LESSON ${lesson.number}` : `الدرس ${num(lesson.number, lang)}`}</span><h1>{t(lesson.title, lang)}</h1><p>{en ? subject.en : subject.ar}</p><div className="review-state"><Icon name="clock" size={18}/><div><b>{en ? "Review status" : "حالة المراجعة"}</b><small data-status={lesson.status}>{t(statusLabel[lesson.status] ?? { ar: "قيد المراجعة", en: "Under review" }, lang)}</small></div></div></aside>
       <section className="lesson-stage">
         {quiz && lesson.quiz ? <Quiz qs={lesson.quiz} lang={lang} onClose={() => setQuiz(false)} onReview={id => { setQuiz(false); go(lesson.cards.findIndex(x => x.id === id)); }} /> : <>
         <article className={`learning-card ${c.kind}`}>
-          <div className="card-meta"><span>{kindLabel[c.kind]?.[en ? 1 : 0]}</span><span>{en ? `Card ${card + 1} of ${lesson.cards.length}` : `البطاقة ${card + 1} من ${lesson.cards.length}`}</span></div>
+          <div className="card-meta"><span>{kindLabel[c.kind]?.[en ? 1 : 0]}</span><span>{en ? `Card ${card + 1} of ${lesson.cards.length}` : `البطاقة ${num(card + 1, lang)} من ${num(lesson.cards.length, lang)}`}</span></div>
           <h2>{t(c.title, lang)}</h2>
           <p className="card-body">{t(c.body, lang)}</p>
-          {c.glossary && <dl className="glossary">{c.glossary.map((gl, i) => <div key={i} style={{ margin: "10px 0" }}><dt><b>{t(gl.term, lang)}</b></dt><dd style={{ margin: 0 }}>{t(gl.gloss, lang)} <small>— {t(sourceTitles[passages[gl.key].source], lang)}, {en ? "p." : "ص"} {passages[gl.key].page}</small></dd></div>)}</dl>}
+          {c.glossary && <dl className="glossary">{c.glossary.map((gl, i) => <div key={i} style={{ margin: "10px 0" }}><dt><b>{t(gl.term, lang)}</b></dt><dd style={{ margin: 0 }}>{t(gl.gloss, lang)} <small>— {t(sourceTitles[passages[gl.key].source], lang)}, {en ? "p." : "ص"} {num(String(passages[gl.key].page), lang)}</small></dd></div>)}</dl>}
           {c.flags?.map((f, i) => <div key={i} className="content-safety" data-flag={f.kind}><b><Icon name="flag" size={15}/> {flagLabel[f.kind][en ? 1 : 0]}</b><p>{t(f.text, lang)}</p></div>)}
           {c.kind === "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}><Icon name="sources" size={17}/> {en ? "Show the passages" : "اعرض النصوص"}</button>}
           {c.kind === "glossary" && evidence && <div className="evidence-panel">{c.glossary!.map((gl, i) => <CitationItem key={i} c={{ key: gl.key, grading: "grading_unverified" }} lang={lang} passages={passages} />)}</div>}
-          {c.citations.length > 0 && c.kind !== "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}><Icon name="sources" size={17}/> {en ? `How do we know this? (${c.citations.length} source${c.citations.length > 1 ? "s" : ""})` : `كيف نعرف ذلك؟ (${c.citations.length})`}</button>}
+          {c.citations.length > 0 && c.kind !== "glossary" && <button className="evidence-btn" onClick={() => setEvidence(v => !v)} aria-expanded={evidence}><Icon name="sources" size={17}/> {en ? `How do we know this? (${c.citations.length} source${c.citations.length > 1 ? "s" : ""})` : `كيف نعرف ذلك؟ (${num(c.citations.length, lang)})`}</button>}
           {evidence && <div className="evidence-panel">{c.citations.map((ci, i) => <CitationItem key={i} c={ci} lang={lang} passages={passages} />)}<small>{en ? "Arabic passages are quoted verbatim from the edition cited. English text on the card is a draft rendering, not a reviewed translation." : "النصوص العربية منقولة بحروفها من الطبعة المذكورة."}</small></div>}
         </article>
         <div className="lesson-controls sl-controls">
           <button className="sl-btn sl-prev" onClick={() => go(card - 1)} disabled={card === 0}><span aria-hidden="true">{en ? "←" : "→"}</span>{en ? "Previous" : "السابق"}</button>
-          <div className="sl-counter" aria-label={en ? `Card ${card + 1} of ${lesson.cards.length}` : `البطاقة ${card + 1} من ${lesson.cards.length}`}><b>{card + 1}/{lesson.cards.length}</b><i>{en ? "Lesson progress" : "تقدّم الدرس"}</i></div>
+          <div className="sl-counter" aria-label={en ? `Card ${card + 1} of ${lesson.cards.length}` : `البطاقة ${num(card + 1, lang)} من ${num(lesson.cards.length, lang)}`}><b>{num(`${card + 1}/${lesson.cards.length}`, lang)}</b><i>{en ? "Lesson progress" : "تقدّم الدرس"}</i></div>
           {card < lesson.cards.length - 1
             ? <button className="sl-btn sl-next" onClick={() => go(card + 1)}>{en ? "Next" : "التالي"}<span aria-hidden="true">{en ? "→" : "←"}</span></button>
             : next
               ? <a className="sl-btn sl-next sl-main" href={`${base}/${next.slug}`}>{en ? "Next lesson" : "الدرس التالي"}<span aria-hidden="true">{en ? "→" : "←"}</span></a>
               : <button className="sl-btn sl-next sl-main" disabled title={en ? "This is the last lesson" : "هذا آخر درس"}>{en ? "Next lesson" : "الدرس التالي"}<span aria-hidden="true">{en ? "→" : "←"}</span></button>}
         </div>
-        {lesson.quiz && <button className="primary-btn quiz-start" onClick={() => setQuiz(true)}>{en ? `Check your understanding (${lesson.quiz.length} questions)` : `اختبر فهمك (${lesson.quiz.length} أسئلة)`}</button>}
+        {lesson.quiz && <button className="primary-btn quiz-start" onClick={() => setQuiz(true)}>{en ? `Check your understanding (${lesson.quiz.length} questions)` : `اختبر فهمك (${num(lesson.quiz.length, lang)} أسئلة)`}</button>}
         </>}
       </section>
-      <aside className="lesson-nav"><div className="lesson-nav-head"><b>{en ? "Lesson cards" : "بطاقات الدرس"}</b><span>{progress}%</span></div>{lesson.cards.map((b, i) => <button onClick={() => go(i)} className={i === card ? "current" : i < card ? "done" : ""} key={b.id}><span>{i + 1}</span><div><b>{t(b.title, lang)}</b></div></button>)}</aside>
+      <aside className="lesson-nav"><div className="lesson-nav-head"><b>{en ? "Lesson cards" : "بطاقات الدرس"}</b><span>{en ? `${progress}%` : `${num(progress, lang)}٪`}</span></div>{lesson.cards.map((b, i) => <button onClick={() => go(i)} className={i === card ? "current" : i < card ? "done" : ""} key={b.id}><span>{num(i + 1, lang)}</span><div><b>{t(b.title, lang)}</b></div></button>)}</aside>
     </div>
   </main>;
 }
@@ -89,11 +90,11 @@ function Quiz({ qs, lang, onClose, onReview }: { qs: QuizQ[]; lang: Lang; onClos
     <h2>{en ? "Check your understanding" : "اختبر فهمك"}</h2>
     <small>{en ? "Questions come only from this lesson's cards." : "الأسئلة مأخوذة من بطاقات هذا الدرس فقط."}</small>
     {qs.map((q, n) => <div key={q.id} style={{ margin: "18px 0" }}>
-      <b>{n + 1}. {t(q.q, lang)}</b>
+      <b>{num(n + 1, lang)}. {t(q.q, lang)}</b>
       <div className="quiz-options">{q.options.map((o, i) => { const picked = ans[q.id] === i; const locked = q.id in ans; return <button key={i} disabled={locked} onClick={() => setAns(v => ({ ...v, [q.id]: i }))} className={`${picked ? "selected" : ""} ${locked && i === q.answer ? "correct" : ""} ${locked && picked && i !== q.answer ? "wrong" : ""}`}><span>{t(o, lang)}</span>{locked && i === q.answer && <b>✓</b>}</button>; })}</div>
       {q.id in ans && <div className={ans[q.id] === q.answer ? "feedback right" : "feedback wrong"}><p>{t(q.explain, lang)}</p><button onClick={() => onReview(q.cardId)}>{en ? "Review this card" : "راجع هذه البطاقة"}</button></div>}
     </div>)}
-    {done && <p><b>{score}/{qs.length}</b></p>}
+    {done && <p><b>{num(`${score}/${qs.length}`, lang)}</b></p>}
     <footer><button className="secondary-btn" onClick={onClose}>{en ? "Back to lesson" : "العودة إلى الدرس"}</button></footer>
   </article>;
 }
